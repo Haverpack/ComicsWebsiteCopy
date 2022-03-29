@@ -1,0 +1,45 @@
+﻿/*Reference: https://stackoverflow.com/questions/45037844/arrange-2-items-per-row-using-flexbox*/
+/*@{
+    Layout = null;
+}> To get rid of bar at top of .html files : )*/
+body {
+}
+
+.f2col
+{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /*width: 50%;*/
+    box-sizing: border-box;
+}
+
+ul{
+    margin: 0;
+    list-style: none;
+    margin-bottom:30px;
+}
+
+.f2col li {
+    text-align: center;
+    width: 40%;
+    display:inline-block;
+    border-radius: 12px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1.5px;
+    margin: 15px;
+}
+
+.f2col li img{
+    max-width: 390px;
+    max-height: 500px;
+    width:auto;
+    height:auto;
+    text-align:center;
+}
+
+.f2col li a{
+    display: block;
+    text-align:center;
+}

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicsAPI", "ComicsAPI\ComicsAPI.csproj", "{F37DB673-7BD5-4AF4-95AD-2837E57A71D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicsAPI.Tests", "ComicsAPI.Tests\ComicsAPI.Tests.csproj", "{B596C9A6-2315-43D3-BF38-3A439AA3AC54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F37DB673-7BD5-4AF4-95AD-2837E57A71D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37DB673-7BD5-4AF4-95AD-2837E57A71D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37DB673-7BD5-4AF4-95AD-2837E57A71D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37DB673-7BD5-4AF4-95AD-2837E57A71D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B596C9A6-2315-43D3-BF38-3A439AA3AC54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B596C9A6-2315-43D3-BF38-3A439AA3AC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B596C9A6-2315-43D3-BF38-3A439AA3AC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B596C9A6-2315-43D3-BF38-3A439AA3AC54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADF732BD-A201-46C5-9A38-A536961561F2}
+	EndGlobalSection
+EndGlobal
