@@ -138,8 +138,10 @@
     <Content Include="Images\Placeholder2.png" />
     <Content Include="Images\PlaceHolder3.png" />
     <Content Include="Images\PlaceHolder4.png" />
+    <Content Include="Images\searchicon.png" />
     <Content Include="Images\spacecraft_debris_odds_ratio.png" />
     <Content Include="Images\spacecraft_debris_odds_ratio_2x.png" />
+    <Content Include="Scripts\Search.js" />
     <Content Include="Styles\Main.css" />
     <Content Include="Styles\Reader.css" />
     <Content Include="favicon.ico" />
@@ -159,6 +161,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Styles\Search.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -174,6 +177,7 @@
     <Content Include="Views\Home\Reader.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
