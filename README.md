@@ -2,12 +2,13 @@
 Website for Group Project of CPSC 471 Winter 2022
 
 ComicsAPI:
-This Folder is for modifiying and executing the API that will be communicating with the databse for our website (to be included)\n
+This Folder is for modifiying and executing the API that will be communicating with the databse for our website (to be included)
 HomeController has been removed from this folder as it caused conflicts when running the website, so will see an error instead of a home page when running API (will try to fix if I have the time?)
 
 ComicsSite:
 This Folder is for modifiying and executing the Website (frontend) that will be displayed to users.
-Controllers folder is for handling what is shown when a page is navigated to (afaik)
+
+	Controllers folder is for handling what is shown when a page is navigated to (afaik)
 	Images folder is where images will be stored to be used in program
 	Styles folder is where stylesheets (css) files are being stored
 	Views folder is where .cshtml for webpages are stored
