@@ -2,7 +2,7 @@
 Website for Group Project of CPSC 471 Winter 2022
 
 ComicsAPI:
-This Folder is for modifiying and executing the API that will be communicating with the databse for our website (to be included)
+This Folder is for modifiying and executing the API that will be communicating with the databse for our website (to be included)\n
 HomeController has been removed from this folder as it caused conflicts when running the website, so will see an error instead of a home page when running API (will try to fix if I have the time?)
 
 ComicsSite:
