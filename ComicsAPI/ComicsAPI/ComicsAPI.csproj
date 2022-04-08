@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -155,10 +158,31 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Catalog.cs" />
+    <Compile Include="Models\Catalog_Tag.cs" />
+    <Compile Include="Models\Chapter.cs" />
+    <Compile Include="Models\Collection_Of.cs" />
+    <Compile Include="Models\Comic.cs" />
+    <Compile Include="Models\Comic_Tag.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Community.cs" />
+    <Compile Include="Models\FComment.cs" />
+    <Compile Include="Models\Forum.cs" />
+    <Compile Include="Models\Member_Of.cs" />
+    <Compile Include="Models\Moderates.cs" />
+    <Compile Include="Models\Report.cs" />
+    <Compile Include="Models\Reviews.cs" />
+    <Compile Include="Models\Subscribes.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Processors\UserProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,7 +238,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Community]
+(
+	[name] NVARCHAR(450) NOT NULL PRIMARY KEY
+)

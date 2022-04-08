@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[User] (
-    [userID]   INT        NOT NULL,
-    [email]    NCHAR (10) NULL,
-    [userName] NCHAR (10) NOT NULL,
+    [userID]   NVARCHAR(50)        NOT NULL,
+    [email]    NVARCHAR(50) NOT NULL,
+    [password] NVARCHAR(50) NOT NULL,
     PRIMARY KEY CLUSTERED ([userID] ASC)
 );
 

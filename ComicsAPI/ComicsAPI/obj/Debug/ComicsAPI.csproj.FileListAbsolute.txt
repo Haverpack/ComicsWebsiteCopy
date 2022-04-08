@@ -83,3 +83,5 @@ D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsAPI\Com
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsAPI\ComicsAPI\obj\Debug\ComicsAPI.csproj.CopyComplete
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsAPI\ComicsAPI\obj\Debug\ComicsAPI.dll
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsAPI\ComicsAPI\obj\Debug\ComicsAPI.pdb
+D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsAPI\ComicsAPI\bin\Dapper.dll
+D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsAPI\ComicsAPI\bin\Dapper.xml

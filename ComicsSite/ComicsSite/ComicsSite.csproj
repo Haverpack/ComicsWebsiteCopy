@@ -138,6 +138,10 @@
     <Content Include="Images\Placeholder2.png" />
     <Content Include="Images\PlaceHolder3.png" />
     <Content Include="Images\PlaceHolder4.png" />
+    <Content Include="Images\Placeholder5.png" />
+    <Content Include="Images\PlaceHolder6.png" />
+    <Content Include="Images\Placeholder7.png" />
+    <Content Include="Images\Placeholder8.png" />
     <Content Include="Images\searchicon.png" />
     <Content Include="Images\spacecraft_debris_odds_ratio.png" />
     <Content Include="Images\spacecraft_debris_odds_ratio_2x.png" />

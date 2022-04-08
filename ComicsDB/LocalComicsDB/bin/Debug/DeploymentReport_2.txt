@@ -1,0 +1,56 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Catalog] (Table)
+       [dbo].[Catalog_Tag] (Table)
+       [dbo].[Chapter] (Table)
+       [dbo].[Collection_Of] (Table)
+       [dbo].[Comic] (Table)
+       [dbo].[Comic_Tag] (Table)
+       [dbo].[Comment] (Table)
+       [dbo].[Community] (Table)
+       [dbo].[FComment] (Table)
+       [dbo].[Forum] (Table)
+       [dbo].[Member_Of] (Table)
+       [dbo].[Moderates] (Table)
+       [dbo].[Report] (Table)
+       [dbo].[Reviews] (Table)
+       [dbo].[Subscribes] (Table)
+       [dbo].[FK_Catalog_Community] (Foreign Key)
+       [dbo].[FK_Catalog_User] (Foreign Key)
+       [dbo].[FK_Catalog_Tag_Catalog] (Foreign Key)
+       [dbo].[FK_Chapter_Comic] (Foreign Key)
+       [dbo].[FK_Collection_Of_Comic] (Foreign Key)
+       [dbo].[FK_Collection_Of_Catalog] (Foreign Key)
+       [dbo].[FK_Comic_Author] (Foreign Key)
+       [dbo].[FK_Comic_Tag_Comic] (Foreign Key)
+       [dbo].[FK_Comment_User] (Foreign Key)
+       [dbo].[FK_Comment_Chapter] (Foreign Key)
+       [dbo].[FK_FComment_Forum] (Foreign Key)
+       [dbo].[FK_FComment_User] (Foreign Key)
+       [dbo].[FK_Forum_Community] (Foreign Key)
+       [dbo].[FK_Member_Of_Community] (Foreign Key)
+       [dbo].[FK_Member_Of_User] (Foreign Key)
+       [dbo].[FK_Moderates_Community] (Foreign Key)
+       [dbo].[FK_Moderates_User] (Foreign Key)
+       [dbo].[FK_Report_User] (Foreign Key)
+       [dbo].[FK_Report_User1] (Foreign Key)
+       [dbo].[FK_Report_Comic] (Foreign Key)
+       [dbo].[FK_Reviews_Admin] (Foreign Key)
+       [dbo].[FK_Reviews_User] (Foreign Key)
+       [dbo].[FK_Reviews_User1] (Foreign Key)
+       [dbo].[FK_Reviews_Comic] (Foreign Key)
+       [dbo].[FK_Subscribes_Comic] (Foreign Key)
+       [dbo].[FK_Subscribes_User] (Foreign Key)
+       [dbo].[FK_Author_User] (Foreign Key)
+
+** Supporting actions
