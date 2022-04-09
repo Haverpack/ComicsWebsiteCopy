@@ -15,3 +15,10 @@ This Folder is for modifiying and executing the Website (frontend) that will be 
 	Models is the (currently empty) folder where c# classes for handling of our relations (i.e. user,admin,comic,community,etc.) will go. Will communicate with API to get info from database and then do whatever it needs to.
 
 I have been mostly using Visual Studio to run these, but if required I can try to see how to run them via command-line so that modifiying with desired IDE/Editor is easier.
+
+ComicsDB:
+This folder is for creating and publishing the database to a server (I used the local server created by visual studio, but can create one with sql server and link it to that instead most likely?)
+	
+   Use LocalComicsDB, ComicsDB was used when I ended up creating a sql server to link. Since I am attempting to use the visual studio local server now to make collaboration simpler, ComicsDB is unnecessary (will most likely delete and rename LocalComicsDB to ComicsDB at a later point)
+	
+   To ensure that the connection Strings in the API project are valid, probably best to create your database in the server (localdb)\ProjectsV13 with the name ComicsDB, or else you might have to change connection Strings to match your setup
