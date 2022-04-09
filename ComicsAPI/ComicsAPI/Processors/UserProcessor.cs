@@ -79,5 +79,55 @@ namespace ComicsAPI.Processors
 
             return true;
         }
+
+        public static bool ModifyUserPW(User user)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+
+                    var updateQuery = $"UPDATE [dbo].[User] SET password = '{user.password}' WHERE userID = '{user.userID}'";
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(updateQuery, connection);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                    connection.Close();
+
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public static bool DeleteUser(string userID)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+
+                    var updateQuery = $"DELETE FROM [dbo].[User] WHERE userID = '{userID}'";
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(updateQuery, connection);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                    connection.Close();
+
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
     }
 }
