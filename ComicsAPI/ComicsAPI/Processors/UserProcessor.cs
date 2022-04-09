@@ -41,6 +41,16 @@ namespace ComicsAPI.Processors
             }
         }
 
+        public static User GetUser(string userID)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                return connection.Query<User>($"SELECT * FROM [dbo].[User] WHERE userID = '{userID}'").ToList()[0];
+            }
+        }
+
         public static Admin GetAdmin(int id)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
@@ -49,6 +59,25 @@ namespace ComicsAPI.Processors
             {
                 return connection.Query<Admin>($"SELECT * FROM dbo.Admin WHERE adminID = {id}").ToList()[0];
             }
+        }
+
+        public static bool ModifyUserName(string oldID, string newID)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            using (var connection = new SqlConnection(connectionString))
+            {
+
+                var updateQuery = $"UPDATE [dbo].[User] SET userID = '{newID}' WHERE userID = '{oldID}'";
+                connection.Open();
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                //return true;
+
+            }
+
+            return true;
         }
     }
 }

@@ -18,23 +18,22 @@ namespace ComicsAPI.Controllers
         }
 
         // GET api/values/5
-        /*
         [HttpGet]
-        [Route("admin")]
-        public IEnumerable<string> GetAdmin(int id)
+        [Route("user/{userID}")]
+        public IEnumerable<string> GetAdmin(string userID)
         {
-            Admin desired;
-            desired = UserProcessor.GetAdmin(id);
+            User desired;
+            desired = UserProcessor.GetUser(userID);
 
-            return new string[] { desired.adminID.ToString(), desired.password };
-        }*/
+            return new string[] { desired.userID, desired.email, desired.password };
+        }
 
         // POST api/values
         [HttpPost]
         [Route("user")]
         public bool signUp(User user)
         {
-            if(user == null)
+            if (user == null)
             {
                 return false;
             }
@@ -43,7 +42,22 @@ namespace ComicsAPI.Controllers
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route("user/{oldID}/{newID}")]
+        public string UpdateUserName(string oldID, string newID)
+        {
+            if(oldID == newID)
+            {
+                return "That name is already set.";
+            }
+            UserProcessor.ModifyUserName(oldID, newID);
+            return $"Set user {oldID} to {newID}";
+
+        }
+
+        [HttpPut]
+        [Route("user")]
+        public void UpdateUserPW(User user)
         {
         }
 
