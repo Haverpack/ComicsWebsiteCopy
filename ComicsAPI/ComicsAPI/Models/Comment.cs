@@ -14,5 +14,7 @@ namespace ComicsAPI.Models
         public int chapterNum { get; set; }
 
         public DateTime Timestamp { get; set; }
+
+        public string body { get; set; }
     }
 }

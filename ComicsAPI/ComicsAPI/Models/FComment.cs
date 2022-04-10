@@ -13,5 +13,7 @@ namespace ComicsAPI.Models
 
         public DateTime timeStamp { get; set; }
 
+        public string body { get; set; }
+
     }
 }

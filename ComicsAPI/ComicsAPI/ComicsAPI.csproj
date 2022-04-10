@@ -158,6 +158,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ConnectionsController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
+    <Compile Include="Controllers\CommunityController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -182,6 +186,10 @@
     <Compile Include="Models\Reviews.cs" />
     <Compile Include="Models\Subscribes.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Processors\ReportsProcessor.cs" />
+    <Compile Include="Processors\CatalogProcessor.cs" />
+    <Compile Include="Processors\ConnectionsProcessor.cs" />
+    <Compile Include="Processors\CommunityProcessor.cs" />
     <Compile Include="Processors\UserProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -11,12 +11,13 @@ namespace ComicsAPI.Controllers
 {
     public class UsersController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        [HttpGet]
+        [Route("user/{userID}/{password}")]
+        public bool signIn(string userID, string password)
         {
-            return new string[] { "value1", "value2", "value3" };
+            return UserProcessor.signIn(userID, password);
         }
-
+        
         // GET api/values/5
         [HttpGet]
         [Route("user/{userID}")]
@@ -57,13 +58,49 @@ namespace ComicsAPI.Controllers
 
         [HttpPut]
         [Route("user")]
-        public void UpdateUserPW(User user)
+        public string UpdateUserPW(User user)
         {
+            try
+            {
+                UserProcessor.ModifyUserPW(user);
+                return "Succesfully updated user password";
+            }
+            catch
+            {
+                return "Error when attempting to modify password (Does this account exist?).";
+            }
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("user/{userID}")]
+        public string Delete(string userID)
         {
+            try
+            {
+                UserProcessor.DeleteUser(userID);
+                return "Succesfully updated user password";
+            }
+            catch
+            {
+                return "Error when attempting to modify password (Does this account exist?).";
+            }
         }
+
+        [HttpPost]
+        [Route("author/{userID}")]
+        public bool makeUserAuthor(string userID)
+        {
+            try
+            {
+                UserProcessor.CreateAuthor(userID);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
