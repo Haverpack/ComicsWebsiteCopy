@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "ComicsDB"
 :setvar DefaultFilePrefix "ComicsDB"
-:setvar DefaultDataPath "C:\Users\Ec_71\AppData\Local\Microsoft\VisualStudio\SSDT\"
-:setvar DefaultLogPath "C:\Users\Ec_71\AppData\Local\Microsoft\VisualStudio\SSDT\"
+:setvar DefaultDataPath "C:\Users\Salman\AppData\Local\Microsoft\VisualStudio\SSDT\"
+:setvar DefaultLogPath "C:\Users\Salman\AppData\Local\Microsoft\VisualStudio\SSDT\"
 
 GO
 :on error exit

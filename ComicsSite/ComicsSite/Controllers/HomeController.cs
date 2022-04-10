@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComicsAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace ComicsSite.Controllers
         public ActionResult Index()
         {
             return View();
+            User user;
         }
 
         public ActionResult Profile()

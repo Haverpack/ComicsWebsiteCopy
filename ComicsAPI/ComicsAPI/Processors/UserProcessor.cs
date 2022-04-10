@@ -10,6 +10,21 @@ namespace ComicsAPI.Processors
 {
     public class UserProcessor
     {
+        public static bool signIn(string user, string pw)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                List<User> check = connection.Query<User>($"SELECT * FROM [dbo].[User] WHERE userID = '{user}' and password = '{pw}'").ToList();
+                if(check.Count == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
         public static bool addUser(User user)
         {
             //String that specifies which DB to connect to
@@ -51,6 +66,77 @@ namespace ComicsAPI.Processors
             }
         }
 
+
+        public static bool ModifyUserName(string oldID, string newID)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            using (var connection = new SqlConnection(connectionString))
+            {
+
+                var updateQuery = $"UPDATE [dbo].[User] SET userID = '{newID}' WHERE userID = '{oldID}'";
+                connection.Open();
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                //return true;
+
+            }
+
+            return true;
+        }
+
+        public static bool ModifyUserPW(User user)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+
+                    var updateQuery = $"UPDATE [dbo].[User] SET password = '{user.password}' WHERE userID = '{user.userID}'";
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(updateQuery, connection);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                    connection.Close();
+
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public static bool DeleteUser(string userID)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+
+                    var updateQuery = $"DELETE FROM [dbo].[User] WHERE userID = '{userID}'";
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(updateQuery, connection);
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                    connection.Close();
+
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
         public static Admin GetAdmin(int id)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
@@ -61,13 +147,71 @@ namespace ComicsAPI.Processors
             }
         }
 
-        public static bool ModifyUserName(string oldID, string newID)
+        public static bool CreateAdmin(string pw)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             using (var connection = new SqlConnection(connectionString))
             {
 
-                var updateQuery = $"UPDATE [dbo].[User] SET userID = '{newID}' WHERE userID = '{oldID}'";
+                var updateQuery = $"INSERT INTO [dbo].[Admin] VALUES ('{pw}')";
+                connection.Open();
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                //return true;
+
+            }
+
+            return true;
+        }
+
+        public static bool ModifyAdminPW(Admin admin)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            using (var connection = new SqlConnection(connectionString))
+            {
+
+                var updateQuery = $"UPDATE [dbo].[Admin] SET admin.password = '{admin.password}' WHERE admin.adminID = {admin.adminID}";
+                connection.Open();
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                //return true;
+
+            }
+
+            return true;
+        }
+
+        public static bool DeleteAdmin(Admin admin)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            using (var connection = new SqlConnection(connectionString))
+            {
+
+                var updateQuery = $"DELETE FROM [dbo].[Admin] WHERE adminID = {admin.adminID}";
+                connection.Open();
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                //return true;
+
+            }
+
+            return true;
+        }
+
+
+        public static bool CreateAuthor(string userID)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            using (var connection = new SqlConnection(connectionString))
+            {
+
+                var updateQuery = $"INSERT INTO [dbo].[Author] VALUES ('{userID}')";
                 connection.Open();
                 SqlCommand command = new SqlCommand(updateQuery, connection);
                 command.ExecuteNonQuery();
