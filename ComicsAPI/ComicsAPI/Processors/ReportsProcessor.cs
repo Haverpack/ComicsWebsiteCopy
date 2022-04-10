@@ -10,7 +10,7 @@ namespace ComicsAPI.Processors
 {
     public class ReportsProcessor
     {
-        public Report GetReportInfo(int reportNum)
+        public static Report GetReportInfo(int reportNum)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
 
@@ -20,7 +20,7 @@ namespace ComicsAPI.Processors
             }
         }
 
-        public List<Report> GetReviewsByAdmin(int adminID)
+        public static List<Report> GetReviewsByAdmin(int adminID)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
 
@@ -40,13 +40,13 @@ namespace ComicsAPI.Processors
             }
         }
 
-        public bool createReportAgainstUser(string offender, string infraction)
+        public static bool createReportAgainstUser(string writer,string offender, string infraction)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             using (var connection = new SqlConnection(connectionString))
             {
                  
-                var updateQuery = $"INSERT INTO [dbo].[Report] (offendingUser,infraction) VALUES ('{offender}','{infraction}')";
+                var updateQuery = $"INSERT INTO [dbo].[Report] (offendingUser,infraction) VALUES ('{writer}','{offender}','{infraction}')";
                 connection.Open();
                 SqlCommand command = new SqlCommand(updateQuery, connection);
                 command.ExecuteNonQuery();
@@ -59,13 +59,13 @@ namespace ComicsAPI.Processors
             return true;
         }
 
-        public bool createReportAgainstComic(string offender, string infraction)
+        public static bool createReportAgainstComic(string writer, string offender, string infraction)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             using (var connection = new SqlConnection(connectionString))
             {
 
-                var updateQuery = $"INSERT INTO [dbo].[Report] (offendingComic,infraction) VALUES ('{offender}','{infraction}')";
+                var updateQuery = $"INSERT INTO [dbo].[Report] (writer,offendingComic,infraction) VALUES ('{writer}','{offender}','{infraction}')";
                 connection.Open();
                 SqlCommand command = new SqlCommand(updateQuery, connection);
                 command.ExecuteNonQuery();
@@ -77,7 +77,7 @@ namespace ComicsAPI.Processors
 
             return true;
         }
-        public bool RemoveReport(int reportNum)
+        public static bool RemoveReport(int reportNum)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             using (var connection = new SqlConnection(connectionString))
