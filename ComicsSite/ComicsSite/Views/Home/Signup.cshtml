@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="~/Styles/Index.css" rel="stylesheet" />
+</head>
+
+@*
+    Sign Up Page, consists of Username, Email, Password, which constitutes a User.
+    Database Call: REF: https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/sending-html-form-data-part-1
+    action="" call will be replaced in the future (if ever), to make a post call towards a proper address.
+    TODO:
+    -- Add some label that displays based on the bool call in our API, should it already exist.
+    -- Add some label or webpage that displays based on the bool call in our API, should it successfully be created
+    -- Notation: 'form' can't be nested inside of table. While it "works" in that it runs, this is bad practice. [RESOLVED]
+*@
+
+<body class="container">
+    <form id="signup" method="post" action="https://localhost:44366/user"
+          enctype="application/x-www-form-urlencoded" class="signupST">
+        <h1>Account Sign Up</h1>
+        <div class="flex-input">
+            <Label for=""> Username: </Label>
+            <input type="text" id="userID" name="userID">
+        </div>
+        <div class="flex-input">
+            <Label for=""> Email: </Label>
+            <input type="text" id="email" name="email">
+        </div>
+        <div class="flex-input">
+            <Label for=""> Password: </Label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <input type="button" value="Sign Up" />
+        </div>
+    </form>
+</body>
+
+</html>
+@*
+<body>
+    <div>
+        <table style="margin:auto;margin-top:auto;margin-bottom:auto">
+            <form id="form1" method="post" action="https://localhost:44366/user"
+                  enctype="application/x-www-form-urlencoded">
+                <tr>
+                    <td>
+                        <Label> Username:  </Label>
+                    </td>
+                    <td>
+                        <input type="text" id="userID" name="userID">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <Label> Email: </Label>
+                    </td>
+                    <td>
+                        <input type="text" id="email" name="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <Label> Password:  </Label>
+                    </td>
+                    <td>
+                        <input type="password" id="password" name="password">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button> Sign Up </button>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
+</body>
+*@

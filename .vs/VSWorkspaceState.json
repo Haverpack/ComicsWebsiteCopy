@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ComicsDB",
+    "\\ComicsSite",
+    "\\ComicsSite\\ComicsSite",
+    "\\ComicsSite\\ComicsSite\\Controllers",
+    "\\ComicsSite\\ComicsSite\\Views",
+    "\\ComicsSite\\ComicsSite\\Views\\Home"
+  ],
+  "SelectedNode": "\\ComicsSite\\ComicsSite\\Views\\Home\\Signup.cshtml",
+  "PreviewInSolutionExplorer": false
+}

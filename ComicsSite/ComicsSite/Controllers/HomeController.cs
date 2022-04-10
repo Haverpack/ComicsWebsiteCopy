@@ -39,5 +39,10 @@ namespace ComicsSite.Controllers
             return View();
         }
 
+        public ActionResult Signup()
+        {
+            return View();
+        }
+
     }
 }

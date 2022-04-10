@@ -1,14 +1,72 @@
-﻿<head></head>
-<br />
-<body>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Styles/Index.css" rel="stylesheet" />
+ 
+</head>
+@*
+    There were a bunch of errors on Index, Resolve via update to Web.config file:
+    REF:
+    -- https://stackoverflow.com/questions/2828393/cs0012-the-type-system-web-routing-routevaluedictionary-is-defined-in-an-asse
+    -- https://www.codegrepper.com/code-examples/html/button+url+action+html
+    -- https://stackoverflow.com/questions/6393827/can-i-nest-a-button-element-inside-an-a-using-html5
+    -- https://www.youtube.com/watch?v=Ba-Ly1EQg2A
+    (Included Assemblies)
+
+    Current Iteration:
+    Sign In calls [GET] Request of API with userID, however, this likely isn't what we want to use in our final iteration.
+    This is because [GET] Request returns user information -- Whereas our purpose is to sign in comparing userID and Password.
+    Signing in would result in the user having something that implies they're on a certain account and can sign out.
+    Signing in at the moment is entirely reliant on userID due to the nature of our [GET] Call.
+    FUNCTION:
+       -- "Sign In" Button to send a [GET] Request to API
+       -- "Sign Up" Button to redirect us to Signup.cshtml
+    TODO:
+       -- Create some API that signs the user in, and informs us that we should display something, somewhere.
+       -- Notation: 'form' can't be nested inside of table. While it "works" in that it runs, this is bad practice. [RESOLVED]
+*@
+<body class="container">
+    <form id="login" method="get" action="https://localhost:44366/user/{userID}"
+          enctype="application/x-www-form-urlencoded" class="loginST">
+        <h1>Account Login</h1>
+        <div class="flex-input">
+            <Label for=""> Username: </Label>
+            <input type="text" id="userID" name="userID">
+        </div>
+        <div class="flex-input">
+            <Label for=""> Password: </Label>
+            <input type="password" id="password" name="password">
+        </div>
         <div>
-            <table style="margin:auto;margin-top:auto;margin-bottom:auto">
+            <input type="button" value="Sign In" />
+            <input type="button" value="Sign Up" onclick="location.href='@Url.Action("Signup", "Home")'" />
+        </div>
+        <div class="flex-container">
+            <div>
+                <input type="checkbox" name="" id="" />
+                <span>Remember me</span>
+                @*<a href="#" style="text-align: right;">Forgot Password?</a>*@
+            </div>
+            <div style="text-align: right;">
+                <a href="#" style="text-align: right;">Forgot Password?</a>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
+@*
+<body>
+    <div>
+        <table style="margin:auto;margin-top:auto;margin-bottom:auto">
+            <form id="login" method="get" action="https://localhost:44366/user/{userID}"
+                  enctype="application/x-www-form-urlencoded">
                 <tr>
                     <td>
                         <Label> Username:  </Label>
                     </td>
                     <td>
-                        <input type="text" id="userName" name="userName">
+                        <input type="text" id="userID" name="userID">
                     </td>
                 </tr>
                 <tr>
@@ -16,16 +74,19 @@
                         <Label> Password:  </Label>
                     </td>
                     <td>
-                        <input type="password" id="pw" name="pw">
+                        <input type="password" id="password" name="password">
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <Button> Sign In </Button>
                     </td>
-                    <td>
-                        <Button> Login </Button>
-                    </td>
-                </tr>
-            </table>
-        </div>
+            </form>
+                <td>
+                    <input type="button" value="Sign Up" onclick="location.href='@Url.Action("Signup", "Home")'" />
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
+*@
