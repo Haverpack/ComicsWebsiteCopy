@@ -7,3 +7,8 @@ D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsDB\Loca
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsDB\LocalComicsDB\obj\Debug\refactor.xml
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsDB\LocalComicsDB\obj\Debug\postdeploy.sql
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsDB\LocalComicsDB\obj\Debug\predeploy.sql
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\bin\Debug\LocalComicsDB.dacpac
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\bin\Debug\LocalComicsDB.dll
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\bin\Debug\LocalComicsDB.pdb
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\obj\Debug\LocalComicsDB.dll
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\obj\Debug\LocalComicsDB.pdb

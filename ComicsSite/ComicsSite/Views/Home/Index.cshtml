@@ -1,5 +1,10 @@
 ﻿<head></head>
 <br />
+@*
+ There were a bunch of errors on Index, Resolve via update to Web.config file:
+ REF: https://stackoverflow.com/questions/2828393/cs0012-the-type-system-web-routing-routevaluedictionary-is-defined-in-an-asse
+ (Included Assemblies)
+*@
 <body>
         <div>
             <table style="margin:auto;margin-top:auto;margin-bottom:auto">
@@ -24,6 +29,9 @@
                     </td>
                     <td>
                         <Button> Login </Button>
+                        <a href="@Url.Action("Signup", "Home")">
+                            <Button> Sign Up </Button>
+                        </a>
                     </td>
                 </tr>
             </table>
