@@ -46,7 +46,7 @@ namespace ComicsAPI.Processors
             using (var connection = new SqlConnection(connectionString))
             {
                  
-                var updateQuery = $"INSERT INTO [dbo].[Report] (offendingUser,infraction) VALUES ('{writer}','{offender}','{infraction}')";
+                var updateQuery = $"INSERT INTO [dbo].[Report] (creator,offendingUser,infraction) VALUES ('{writer}','{offender}','{infraction}')";
                 connection.Open();
                 SqlCommand command = new SqlCommand(updateQuery, connection);
                 command.ExecuteNonQuery();

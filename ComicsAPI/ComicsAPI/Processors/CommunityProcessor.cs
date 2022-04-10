@@ -62,7 +62,7 @@ namespace ComicsAPI.Processors
 
         }
 
-        public static bool createForum(Forum forum, string writer)
+        public static bool createForum(Forum forum, string writer, string body)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
@@ -70,14 +70,14 @@ namespace ComicsAPI.Processors
                 using (var connection = new SqlConnection(connectionString))
                 {
 
-                    var updateQuery = $"INSERT INTO [dbo].[Forum] VALUES ('{forum.communityName}','{forum.title}')";
+                    var updateQuery = $"INSERT INTO [dbo].[Forum] VALUES ('{forum.title}','{forum.communityName}')";
                     connection.Open();
                     SqlCommand command = new SqlCommand(updateQuery, connection);
                     command.ExecuteNonQuery();
                     command.Dispose();
 
                     //Create original post for forum 
-                    updateQuery = $"INSERT INTO [dbo].[FComment] (writer,forumTitle) VALUES ('{writer}','{forum.title}')";
+                    updateQuery = $"INSERT INTO [dbo].[FComment] (forumTitle,writer,body,commName) VALUES ('{forum.title}','{writer}','{body}','{forum.communityName}')";
                     command = new SqlCommand(updateQuery, connection);
                     command.ExecuteNonQuery();
                     command.Dispose();
@@ -87,14 +87,15 @@ namespace ComicsAPI.Processors
                 }
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
 
         //This is to create JUST a comment, not a forum like the above function
-        public static bool commentOnForum(Forum forum, string writer)
+        public static bool commentOnForum(Forum forum, string writer,string body)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
@@ -104,7 +105,8 @@ namespace ComicsAPI.Processors
 
 
                     //Create original post for forum 
-                    var updateQuery = $"INSERT INTO [dbo].[FComment] (writer,forumTitle) VALUES ('{writer}','{forum.title}')";
+                    connection.Open();
+                    var updateQuery = $"INSERT INTO [dbo].[FComment] (forumTitle,writer,body,commName) VALUES ('{forum.title}','{writer}','{body}','{forum.communityName}')";
                     SqlCommand command = new SqlCommand(updateQuery, connection);
                     command.ExecuteNonQuery();
                     command.Dispose();
@@ -114,8 +116,9 @@ namespace ComicsAPI.Processors
                 }
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
 

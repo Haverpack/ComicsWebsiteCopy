@@ -1,0 +1,30 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Comment]
+       [dbo].[FComment]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[Comment] (Default Constraint)
+       unnamed constraint on [dbo].[FComment] (Default Constraint)
+     Table rebuild
+       [dbo].[Comment] (Table)
+       [dbo].[FComment] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Comment_User] (Foreign Key)
+       [dbo].[FK_Comment_Chapter] (Foreign Key)
+       [dbo].[FK_FComment_Forum] (Foreign Key)
+       [dbo].[FK_FComment_User] (Foreign Key)
+     Create
+       [dbo].[FK_Comment_User] (Foreign Key)
+       [dbo].[FK_Comment_Chapter] (Foreign Key)
+       [dbo].[FK_FComment_Forum] (Foreign Key)
+       [dbo].[FK_FComment_User] (Foreign Key)

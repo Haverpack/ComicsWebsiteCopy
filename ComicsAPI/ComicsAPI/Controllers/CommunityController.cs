@@ -38,36 +38,21 @@ namespace ComicsAPI.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        [Route("community/forum/{writer}")]
-        public bool createForum(Forum forum,string writer)
+        [Route("community/forum/{writer}/{body}")]
+        public bool createForum(Forum forum,string writer,string body)
         {
-            try
-            {
-                CommunityProcessor.createForum(forum, writer);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+               return CommunityProcessor.createForum(forum, writer,body);    
         }
 
         // POST api/<controller>
         [HttpPost]
-        [Route("community/forum/comment/{writer}")]
-        public bool commentOnForum(Forum forum, string writer)
+        [Route("community/forum/comment/{writer}/{body}")]
+        public bool commentOnForum(Forum forum, string writer, string body)
         {
-            try
-            {
-                CommunityProcessor.commentOnForum(forum, writer);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
+            return CommunityProcessor.commentOnForum(forum, writer, body);
+
+        }
         // DELETE api/<controller>/5
         [HttpDelete]
         [Route("community")]
@@ -86,7 +71,7 @@ namespace ComicsAPI.Controllers
 
         [HttpDelete]
         [Route("community/forum")]
-        public bool DeleteCommunity(Forum forum)
+        public bool DeleteForum(Forum forum)
         {
             try
             {

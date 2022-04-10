@@ -10,3 +10,7 @@ G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\bin\Debug\ComicsDB.pdb
 G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\ComicsDB.sqlproj.AssemblyReference.cache
 G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\ComicsDB.dll
 G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\ComicsDB.pdb
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\Model.xml
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\refactor.xml
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\postdeploy.sql
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\predeploy.sql

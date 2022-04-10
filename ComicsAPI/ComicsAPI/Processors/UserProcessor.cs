@@ -10,6 +10,21 @@ namespace ComicsAPI.Processors
 {
     public class UserProcessor
     {
+        public static bool signIn(string user, string pw)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                List<User> check = connection.Query<User>($"SELECT * FROM [dbo].[User] WHERE userID = '{user}' and password = '{pw}'").ToList();
+                if(check.Count == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
         public static bool addUser(User user)
         {
             //String that specifies which DB to connect to

@@ -11,6 +11,12 @@ namespace ComicsAPI.Controllers
 {
     public class UsersController : ApiController
     {
+        [HttpGet]
+        [Route("user/{userID}/{password}")]
+        public bool signIn(string userID, string password)
+        {
+            return UserProcessor.signIn(userID, password);
+        }
         
         // GET api/values/5
         [HttpGet]
