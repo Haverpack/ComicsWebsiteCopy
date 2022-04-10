@@ -29,18 +29,50 @@ namespace ComicsAPI.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        [HttpPost]
+        [Route("admin/{pw}")]
+        public bool createAdmin(string pw)
         {
+            try
+            {
+                UserProcessor.CreateAdmin(pw);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route("admin")]
+        public bool updateAdminPW(Admin admin)
         {
+            try
+            {
+                UserProcessor.ModifyAdminPW(admin);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [Route("admin")]
+        public bool Delete(Admin admin)
         {
+            try
+            {
+                UserProcessor.DeleteAdmin(admin);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
