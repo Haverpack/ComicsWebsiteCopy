@@ -80,5 +80,21 @@ namespace ComicsAPI.Controllers
                 return "Error when attempting to modify password (Does this account exist?).";
             }
         }
+
+        [HttpPost]
+        [Route("author/{userID}")]
+        public bool makeUserAuthor(string userID)
+        {
+            try
+            {
+                UserProcessor.CreateAuthor(userID);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

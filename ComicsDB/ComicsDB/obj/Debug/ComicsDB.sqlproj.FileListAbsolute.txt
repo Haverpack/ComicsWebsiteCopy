@@ -4,3 +4,9 @@ D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsDB\Comi
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsDB\ComicsDB\obj\Debug\ComicsDB.sqlproj.AssemblyReference.cache
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsDB\ComicsDB\obj\Debug\ComicsDB.dll
 D:\Uni Stuff\Third Year Stuff\Winter 2022\CPSC471\Project\Codebase\ComicsDB\ComicsDB\obj\Debug\ComicsDB.pdb
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\bin\Debug\ComicsDB.dacpac
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\bin\Debug\ComicsDB.dll
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\bin\Debug\ComicsDB.pdb
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\ComicsDB.sqlproj.AssemblyReference.cache
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\ComicsDB.dll
+G:\Uni Projects\ComicsWebsite\ComicsDB\ComicsDB\obj\Debug\ComicsDB.pdb

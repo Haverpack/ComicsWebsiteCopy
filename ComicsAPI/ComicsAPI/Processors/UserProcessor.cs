@@ -188,5 +188,25 @@ namespace ComicsAPI.Processors
 
             return true;
         }
+
+
+        public static bool CreateAuthor(string userID)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            using (var connection = new SqlConnection(connectionString))
+            {
+
+                var updateQuery = $"INSERT INTO [dbo].[Author] VALUES ('{userID}')";
+                connection.Open();
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+                //return true;
+
+            }
+
+            return true;
+        }
     }
 }
