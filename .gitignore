@@ -1,0 +1,7 @@
+*.dll
+*.pdb
+*.cache
+*.suo
+*.dbmdl
+*.jfm
+*.dacpac
