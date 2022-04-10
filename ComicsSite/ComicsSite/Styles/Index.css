@@ -1,0 +1,63 @@
+﻿/* REF: 
+    https://www.youtube.com/watch?v=Ba-Ly1EQg2A
+*/
+.container {
+    display: flex;
+    justify-content: center;
+    /*height: 700px;*/
+    align-items: center;
+}
+
+.loginST {
+    background-color: rgb(255, 255, 255, 0.7);
+    padding: 15px;
+    width: 350px;
+}
+
+.flex-input {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container div {
+    flex: 1;
+}
+
+.flex-container a:hover {
+    text-decoration: underline;
+}
+
+input[type="text"], [type="password"] {
+    padding: 5px;
+    font-size: 15px;
+}
+
+label {
+    flex-basis: 90px;
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: right;
+}
+
+input[type="buttton"] {
+    width: 40%;
+    font-size: 20px;
+    padding: 5px;
+    border: none;
+    margin: 20px 0;
+}
+
+@media all and (max-width: 480px) {
+    .flex-input {
+        flex-direction: column;
+    }
+
+    label {
+        flex-basis: 0;
+    }
+}
