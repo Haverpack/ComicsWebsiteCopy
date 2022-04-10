@@ -12,7 +12,7 @@ namespace ComicsAPI.Processors
         //This file will deal with Community, Forum, And FComment Models
 
         //TODO: Create a moderates relationship between community and person who created 
-        public bool createCommunity(string name)
+        public static bool createCommunity(string name)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
@@ -37,7 +37,7 @@ namespace ComicsAPI.Processors
 
         }
 
-        public bool deleteCommunity(string name)
+        public static bool deleteCommunity(string name)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
@@ -62,7 +62,7 @@ namespace ComicsAPI.Processors
 
         }
 
-        public bool createForum(Forum forum, string writer)
+        public static bool createForum(Forum forum, string writer)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
@@ -94,7 +94,7 @@ namespace ComicsAPI.Processors
         }
 
         //This is to create JUST a comment, not a forum like the above function
-        public bool commentOnForum(Forum forum, string writer)
+        public static bool commentOnForum(Forum forum, string writer)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
@@ -122,7 +122,7 @@ namespace ComicsAPI.Processors
         }
 
         //Try this, not sure if entire primary key needed tbh
-        public bool deleteComment(Forum forum, int commentNum)
+        public static bool deleteComment(Forum forum, int commentNum)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
@@ -147,7 +147,7 @@ namespace ComicsAPI.Processors
 
         }
 
-        public bool deleteForum(Forum forum)
+        public static bool deleteForum(Forum forum)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try

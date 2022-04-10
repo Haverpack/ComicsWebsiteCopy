@@ -61,6 +61,7 @@ namespace ComicsAPI.Controllers
         }
 
         // DELETE api/<controller>/5
+        [HttpDelete]
         [Route("admin")]
         public bool Delete(Admin admin)
         {
