@@ -31,14 +31,15 @@ namespace ComicsAPI.Controllers
         // POST api/values
         [HttpPost]
         [Route("user")]
-        public bool signUp(User user)
+        public void signUp(User user)
         {
             if (user == null)
             {
-                return false;
+                //return false;
             }
+            UserProcessor.addUser(user);
 
-            return UserProcessor.addUser(user);
+            //return UserProcessor.addUser(user);
         }
 
         // PUT api/values/5

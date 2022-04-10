@@ -1,10 +1,20 @@
-﻿<head></head>
+﻿<head>
+</head>
 <br />
+@*
+    Sign Up Page, consists of Username, Email, Password, which constitutes a User.
+    Database Call: REF: https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/sending-html-form-data-part-1
+    action="" call will be replaced in the future (if ever), to make a post call towards a proper address.
+    TODO:
+    -- Add some label that displays based on the bool call in our API, should it already exist.
+    -- Add some label or webpage that displays based on the bool call in our API, should it successfully be created
+    -- Notation: 'form' can't be nested inside of table. While it "works" in that it runs, this is bad practice.
+*@
 <body>
-        <div>
-            <table style="margin:auto;margin-top:auto;margin-bottom:auto">
-                <form id="form1" method="post" action="localhost:44366/user"
-                      enctype="application/x-www-form-urlencoded">
+    <div>
+        <table style="margin:auto;margin-top:auto;margin-bottom:auto">
+            <form id="form1" method="post" action="https://localhost:44366/user"
+                  enctype="application/x-www-form-urlencoded">
                 <tr>
                     <td>
                         <Label> Username:  </Label>
@@ -13,12 +23,14 @@
                         <input type="text" id="userID" name="userID">
                     </td>
                 </tr>
-                <td>
-                    <Label> Email: </Label>
-                </td>
-                <td>
-                    <input type="text" id="email" name="email">
-                </td>
+                <tr>
+                    <td>
+                        <Label> Email: </Label>
+                    </td>
+                    <td>
+                        <input type="text" id="email" name="email">
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <Label> Password:  </Label>
@@ -32,7 +44,7 @@
                         <button> Sign Up </button>
                     </td>
                 </tr>
-                </form>
-            </table>
-        </div>
+            </form>
+        </table>
+    </div>
 </body>

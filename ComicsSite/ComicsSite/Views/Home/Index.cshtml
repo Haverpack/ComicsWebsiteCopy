@@ -1,19 +1,38 @@
-﻿<head></head>
+﻿<head>
+</head>
 <br />
 @*
- There were a bunch of errors on Index, Resolve via update to Web.config file:
- REF: https://stackoverflow.com/questions/2828393/cs0012-the-type-system-web-routing-routevaluedictionary-is-defined-in-an-asse
- (Included Assemblies)
+    There were a bunch of errors on Index, Resolve via update to Web.config file:
+    REF:
+    -- https://stackoverflow.com/questions/2828393/cs0012-the-type-system-web-routing-routevaluedictionary-is-defined-in-an-asse
+    -- https://www.codegrepper.com/code-examples/html/button+url+action+html
+    -- https://stackoverflow.com/questions/6393827/can-i-nest-a-button-element-inside-an-a-using-html5
+    -- 
+    (Included Assemblies)
+
+    Current Iteration:
+    Sign In calls [GET] Request of API with userID, however, this likely isn't what we want to use in our final iteration.
+    This is because [GET] Request returns user information -- Whereas our purpose is to sign in comparing userID and Password.
+    Signing in would result in the user having something that implies they're on a certain account and can sign out.
+    Signing in at the moment is entirely reliant on userID due to the nature of our [GET] Call.
+    FUNCTION:
+       -- "Sign In" Button to send a [GET] Request to API
+       -- "Sign Up" Button to redirect us to Signup.cshtml
+    TODO:
+       -- Create some API that signs the user in, and informs us that we should display something, somewhere.
+       -- Notation: 'form' can't be nested inside of table. While it "works" in that it runs, this is bad practice.
 *@
 <body>
-        <div>
-            <table style="margin:auto;margin-top:auto;margin-bottom:auto">
+    <div>
+        <table style="margin:auto;margin-top:auto;margin-bottom:auto">
+            <form id="login" method="get" action="https://localhost:44366/user/{userID}"
+                  enctype="application/x-www-form-urlencoded">
                 <tr>
                     <td>
                         <Label> Username:  </Label>
                     </td>
                     <td>
-                        <input type="text" id="userName" name="userName">
+                        <input type="text" id="userID" name="userID">
                     </td>
                 </tr>
                 <tr>
@@ -21,19 +40,18 @@
                         <Label> Password:  </Label>
                     </td>
                     <td>
-                        <input type="password" id="pw" name="pw">
+                        <input type="password" id="password" name="password">
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <Button> Sign In </Button>
                     </td>
-                    <td>
-                        <Button> Login </Button>
-                        <a href="@Url.Action("Signup", "Home")">
-                            <Button> Sign Up </Button>
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </div>
+            </form>
+                <td>
+                    <input type="button" value="Sign Up" onclick="location.href='@Url.Action("Signup", "Home")'" />
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
