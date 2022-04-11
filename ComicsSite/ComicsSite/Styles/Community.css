@@ -1,0 +1,113 @@
+﻿/*
+    REF:
+    https://www.youtube.com/watch?v=fYq5PXgSsbE
+    https://www.youtube.com/watch?v=vQAvjof1oe4&t=589s
+
+*/
+.com_container {
+    display: flex;
+    /*This is what makes navbar centered.*/
+    flex-direction: column;
+    background-color:aqua;
+
+    min-width: 1000px;
+    min-height: 1000px;
+    flex: 1 0 auto;
+}
+
+.flexbox-item {
+    min-width: 500px;
+    min-height: 500px;
+    margin: 10px;
+    border: 3px solid #333;
+    background-color: #dfdfdf;
+}
+
+.flexbox-title {
+    display: flex;
+    flex: 1 1 100%;
+    align-items: center;
+    background-color:cadetblue;
+    justify-content: center;
+
+    max-height: 100px;
+}
+
+label {
+    flex-basis: 90px;
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.content-sidebar {
+    display: flex;
+    /*Wrap lets us get away with not having a query*/
+    flex-wrap: wrap;
+    background-color:black;
+
+    flex: 1 1 100%;
+}
+
+/* Better if we have a 'content' classs to put here
+    instead of having "*:nth-child(1)"
+    I tried, but I can't seem to figure it out.
+*/
+.content-sidebar > *:nth-child(1) {
+    flex: 1 1 15%;
+    min-width: 15ch;
+    background-color: aquamarine;
+}
+
+.content-sidebar > *:nth-child(2) {
+    flex: 1 1 80%;
+    /* 
+        Make it so it doesn't stack 
+        25 characters wide.
+    */
+    min-width: 25ch;
+    background-color: aquamarine;
+}
+
+/*
+    TAKEN FROM: Main.css
+*/
+.f2col {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /*width: 50%;*/
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.f2col li {
+    text-align: center;
+    width: 20%;
+    height: auto;
+    display: inline-block;
+    border-radius: 12px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1.5px;
+    margin: 15px;
+}
+
+    .f2col li a img {
+        /*max-width: 195px;
+    max-height: 300px;*/
+        width: 50%;
+        height: 25%;
+        text-align: left;
+    }
+
+    .f2col li a {
+        display: block;
+        text-align: center;
+    }
+

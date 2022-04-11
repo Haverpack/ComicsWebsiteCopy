@@ -168,6 +168,7 @@
     <Content Include="Styles\Search.css" />
     <Content Include="Styles\Index.css" />
     <Content Include="Styles\Signup.css" />
+    <Content Include="Styles\Community.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -185,6 +186,7 @@
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
+    <Content Include="Views\Home\Community.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
