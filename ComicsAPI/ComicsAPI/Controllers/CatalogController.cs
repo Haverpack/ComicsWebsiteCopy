@@ -12,14 +12,14 @@ namespace ComicsAPI.Controllers
     public class CatalogController : ApiController
     {
         [HttpGet]
-        [Route("catalog")]
+        [Route("catalog/{title}")]
         public Catalog GetCatalog(string title)
         {
             return CatalogProcessor.GetCatalog(title);
         }
 
         [HttpGet]
-        [Route("comic")]
+        [Route("comic/{title}")]
         public Comic GetComic(string title)
         {
             return CatalogProcessor.GetComic(title);
@@ -33,7 +33,7 @@ namespace ComicsAPI.Controllers
         }
 
         [HttpGet]
-        [Route("comic/chapter/comment")]
+        [Route("comic/chapter/comment/{commentNum}/{chapterNum}/{comicTitle}")]
         public Comment GetComment(int commentNum, int chapterNum, string comicTitle)
         {
             return CatalogProcessor.GetComment(commentNum,chapterNum,comicTitle);
@@ -68,14 +68,14 @@ namespace ComicsAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("catalog")]
+        [Route("catalog/{title}")]
         public bool RemoveCatalog(string title)
         {
             return CatalogProcessor.RemoveCatalog(title);
         }
 
         [HttpDelete]
-        [Route("comic")]
+        [Route("comic/{title}")]
         public bool RemoveComic(string title)
         {
             return CatalogProcessor.RemoveComic(title);
@@ -89,14 +89,14 @@ namespace ComicsAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("comic/chapter/comment")]
+        [Route("comic/chapter/comment/{commentNum}/{chapterNum}/{comicTitle}")]
         public bool RemoveComment(int commentNum, int chapterNum, string comicTitle)
         {
             return CatalogProcessor.RemoveComment(commentNum,chapterNum,comicTitle);
         }
 
         [HttpPut]
-        [Route("comic/chapter/comment")]
+        [Route("comic/chapter/comment/{commentNum}/{chapterNum}/{comicTitle}/{body}")]
         public bool EditComment(int commentNum, int chapterNum, string comicTitle, string body)
         {
             return CatalogProcessor.EditComment(commentNum,chapterNum,comicTitle,body);
