@@ -12,14 +12,14 @@ namespace ComicsAPI.Controllers
     public class CatalogController : ApiController
     {
         [HttpGet]
-        [Route("catalog/{title}")]
+        [Route("catalog/search/{title}")]
         public Catalog GetCatalog(string title)
         {
             return CatalogProcessor.GetCatalog(title);
         }
 
         [HttpGet]
-        [Route("comic/{title}")]
+        [Route("comic/search/{title}")]
         public Comic GetComic(string title)
         {
             return CatalogProcessor.GetComic(title);
@@ -68,14 +68,14 @@ namespace ComicsAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("catalog/{title}")]
+        [Route("catalog/delete/{title}")]
         public bool RemoveCatalog(string title)
         {
             return CatalogProcessor.RemoveCatalog(title);
         }
 
         [HttpDelete]
-        [Route("comic/{title}")]
+        [Route("comic/delete/{title}")]
         public bool RemoveComic(string title)
         {
             return CatalogProcessor.RemoveComic(title);

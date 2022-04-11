@@ -40,7 +40,7 @@ namespace ComicsAPI.Controllers
         }
 
         [HttpGet]
-        [Route("user/communities/{userID}")]
+        [Route("user/search/communities/{userID}")]
         public List<Community> GetCommunities(string userID)
         {
             return ConnectionsProcessor.GetCommunities(userID);
@@ -117,35 +117,35 @@ namespace ComicsAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("subscriptions/users")]
+        [Route("community/members")]
         public bool RemoveMember(Member_Of toDel)
         {
             return ConnectionsProcessor.RemoveMember(toDel);
         }
 
         [HttpDelete]
-        [Route("subscriptions/users")]
+        [Route("community/mods")]
         public bool RemoveMod(Moderates toDel)
         {
             return ConnectionsProcessor.RemoveMod(toDel);
         }
 
         [HttpDelete]
-        [Route("subscriptions/users")]
+        [Route("comic/tag")]
         public bool RemoveComicTag(Comic_Tag toDel)
         {
             return ConnectionsProcessor.DeleteComicTag(toDel);
         }
 
         [HttpDelete]
-        [Route("subscriptions/users")]
+        [Route("catalog/tag")]
         public bool RemoveCatalogTag(Catalog_Tag toDel)
         {
             return ConnectionsProcessor.DeleteCatalogTag(toDel);
         }
 
         [HttpDelete]
-        [Route("subscriptions/users")]
+        [Route("catalog/comics")]
         public bool RemoveComicFromCat(Collection_Of toDel)
         {
             return ConnectionsProcessor.RemoveFromCatalog(toDel);

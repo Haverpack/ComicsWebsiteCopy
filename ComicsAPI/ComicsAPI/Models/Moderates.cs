@@ -10,6 +10,6 @@ namespace ComicsAPI.Models
 
         public string userID { get; set; }
 
-        public string communityName { get; set; }
+        public string commName { get; set; }
     }
 }

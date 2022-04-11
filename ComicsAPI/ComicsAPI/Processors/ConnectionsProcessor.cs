@@ -35,7 +35,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<Comic>($"SELECT comicTitle FROM [dbo].[Subscribes] WHERE userID = '{userID}'").ToList();
+                    return connection.Query<Comic>($"SELECT comicTitle as title FROM [dbo].[Subscribes] WHERE userID = '{userID}'").ToList();
                 }
             }
             catch
@@ -75,7 +75,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<User>($"SELECT userID FROM [dbo].[Moderates] WHERE userID = '{name}'").ToList();
+                    return connection.Query<User>($"SELECT userID FROM [dbo].[Moderates] WHERE commName = '{name}'").ToList();
                 }
             }
             catch
@@ -107,7 +107,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"INSERT INTO [dbo].[Member_Of] VALUES ('{toAdd.communityName}'.'{toAdd.memberID}')";
+                    var query = $"INSERT INTO [dbo].[Member_Of] VALUES ('{toAdd.commName}','{toAdd.userID}')";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -118,8 +118,9 @@ namespace ComicsAPI.Processors
                     return true;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
@@ -131,7 +132,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"INSERT INTO [dbo].[Moderates] VALUES ('{toAdd.communityName}'.'{toAdd.userID}')";
+                    var query = $"INSERT INTO [dbo].[Moderates] VALUES ('{toAdd.commName}','{toAdd.userID}')";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -155,7 +156,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<Community>($"SELECT commName FROM [dbo].[Member_Of] WHERE userID = '{userID}'").ToList();
+                    return connection.Query<Community>($"SELECT commName as name FROM [dbo].[Member_Of] WHERE userID = '{userID}'").ToList();
                 }
             }
             catch
@@ -171,7 +172,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<Comic>($"SELECT comicTitle FROM [dbo].[Collection_Of] WHERE catalogTitle = '{catalogTitle}'").ToList();
+                    return connection.Query<Comic>($"SELECT comicTitle as title FROM [dbo].[Collection_Of] WHERE catalogTitle = '{catalogTitle}'").ToList();
                 }
             }
             catch
@@ -187,7 +188,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"INSERT INTO [dbo].[Collection_Of] VALUES ('{toAdd.catalogueID}','{toAdd.comicTitle}')";
+                    var query = $"INSERT INTO [dbo].[Collection_Of] VALUES ('{toAdd.catalogTitle}','{toAdd.comicTitle}')";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -230,8 +231,9 @@ namespace ComicsAPI.Processors
                     return connection.Query<Comic_Tag>($"SELECT tag FROM [dbo].[Comic_Tag] WHERE comicTitle = '{comicTitle}'").ToList();
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
@@ -243,7 +245,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"INSERT INTO [dbo].[Catalog_Tag] VALUES ('{catTag.catalogID}','{catTag.tag}')";
+                    var query = $"INSERT INTO [dbo].[Catalog_Tag] VALUES ('{catTag.catalogTitle}','{catTag.tag}')";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -267,7 +269,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"INSERT INTO [dbo].[Comic_Tag] VALUES ('{comTag.comicID}','{comTag.tag}')";
+                    var query = $"INSERT INTO [dbo].[Comic_Tag] VALUES ('{comTag.comicTitle}','{comTag.tag}')";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -291,7 +293,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"DELETE FROM [dbo].[Comic_Tag] WHERE comicTitle = '{comTag.comicID}' and tag = '{comTag.tag}'";
+                    var query = $"DELETE FROM [dbo].[Comic_Tag] WHERE comicTitle = '{comTag.comicTitle}' and tag = '{comTag.tag}'";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -315,7 +317,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"DELETE FROM [dbo].[Catalog_Tag] WHERE catalogTitle = '{catTag.catalogID}' and tag = '{catTag.tag}'";
+                    var query = $"DELETE FROM [dbo].[Catalog_Tag] WHERE catalogTitle = '{catTag.catalogTitle}' and tag = '{catTag.tag}'";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -339,7 +341,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"DELETE FROM [dbo].[Moderates] WHERE commName = '{mod.communityName}' and userID = '{mod.userID}'";
+                    var query = $"DELETE FROM [dbo].[Moderates] WHERE commName = '{mod.commName}' and userID = '{mod.userID}'";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -363,7 +365,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"DELETE FROM [dbo].[Member_Of] WHERE commName = '{member.communityName}' and userID = '{member.memberID}'";
+                    var query = $"DELETE FROM [dbo].[Member_Of] WHERE commName = '{member.commName}' and userID = '{member.userID}'";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -411,7 +413,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"DELETE FROM [dbo].[Collection_Of] WHERE comicTitle = '{collection.comicTitle}' and tag = '{collection.catalogueID}'";
+                    var query = $"DELETE FROM [dbo].[Collection_Of] WHERE comicTitle = '{collection.comicTitle}' and catalogTitle = '{collection.catalogTitle}'";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
