@@ -39,6 +39,13 @@ namespace ComicsAPI.Controllers
             return CatalogProcessor.GetComment(comment);
         }
 
+        [HttpGet]
+        [Route("community/catalog")]
+        public List<Catalog> GetCommunityCatalog(Community community)
+        {
+            return CatalogProcessor.GetCommunityCatalog(community);
+        }
+
         [HttpPost]
         [Route("catalog")]
         public bool AddCatalog(Catalog catalog)

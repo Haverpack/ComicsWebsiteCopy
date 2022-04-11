@@ -8,5 +8,7 @@ namespace ComicsAPI.Models
     public class Community
     {
         public string name { get; set; }
+
+        public string creator { get; set; }
     }
 }

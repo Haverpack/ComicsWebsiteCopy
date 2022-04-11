@@ -19,7 +19,7 @@ namespace ComicsAPI.Controllers
         {
             try
             {
-                CommunityProcessor.createCommunity(community.name);
+                CommunityProcessor.createCommunity(community);
                 return true;
             }
             catch

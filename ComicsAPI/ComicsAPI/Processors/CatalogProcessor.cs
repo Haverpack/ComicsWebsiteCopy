@@ -297,5 +297,21 @@ namespace ComicsAPI.Processors
                 return false;
             }
         }
+
+        public static List<Catalog> GetCommunityCatalog(Community community)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    return connection.Query<Catalog>($"SELECT * FROM [dbo].[Catalog] WHERE commName = '{community.name}'").ToList();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
