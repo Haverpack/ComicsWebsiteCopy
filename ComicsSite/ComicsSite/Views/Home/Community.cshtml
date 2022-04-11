@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+
+@*
+    Community Page.
+    REF: https://www.youtube.com/watch?v=vQAvjof1oe4&t=589s
+
+    TODO:
+    -- Add some Search bar under the first flexbox-item <div>, and/or tags to include/exclude communities.
+    -- Pages of community catalogue -- For when too many communities, can't fit on one page.
+    -- Scalability: Messing with flex. at the moment, I've forced com_container to be static, as the boxes stack otherwise.
+    -- Community PAGES :: Some customizable default page that represent the community, when clicked.
+    -- Database Communication :: Some way to grab all communities from database and represent in the second flexbox-item.
+*@
+
+<head>
+    <link href="~/Styles/Community.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="com_container">
+        <div class="flexbox-title">
+            <h1>Communities</h1>
+        </div>
+        <div class="content-sidebar">
+            <div class="flexbox-item"></div>
+            <div class="flexbox-item">
+                <ul class="f2col">
+                    <li>
+                        <a href="https://localhost:44352/Home/Community">
+                            <img src="~/Images/Placeholder1.png" />
+                        </a>
+                        <a href="https://localhost:44352/Home/Community">Fantasy Community</a>
+                    </li>
+                    <li>
+                        <a href="https://localhost:44352/Home/Community">
+                            <img src="~/Images/Placeholder2.png" />
+                        </a>
+                        <a href="https://localhost:44352/Home/Community">Sports Community</a>
+                    </li>
+                    <li>
+                        <a href="https://localhost:44352/Home/Community">
+                            <img src="~/Images/PlaceHolder3.png" />
+                        </a>
+                        <a href="https://localhost:44352/Home/Community">Action Community</a>
+                    </li>
+                    <li>
+                        <a href="https://localhost:44352/Home/Community">
+                            <img src="~/Images/PlaceHolder4.png" />
+                        </a>
+                        <a href="https://localhost:44352/Home/Community">Tragic Community</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

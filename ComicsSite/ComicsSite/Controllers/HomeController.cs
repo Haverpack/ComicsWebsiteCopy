@@ -44,5 +44,10 @@ namespace ComicsSite.Controllers
             return View();
         }
 
+        public ActionResult Community()
+        {
+            return View();
+        }
+
     }
 }
