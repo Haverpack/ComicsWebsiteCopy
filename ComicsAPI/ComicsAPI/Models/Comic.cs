@@ -11,5 +11,7 @@ namespace ComicsAPI.Models
 
         public string pages { get; set; } //I'm assuming we'll be storing the path to the pages?
 
+        public string author { get; set; }
+
     }
 }
