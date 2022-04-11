@@ -20,7 +20,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<Catalog>($"SELECT * FROM [dbo].[Catalog] WHERE catalogTitle = '{title}'").ToList()[0];
+                    return connection.Query<Catalog>($"SELECT * FROM [dbo].[Catalog] WHERE title = '{title}'").ToList()[0];
                 }
             }
             catch
@@ -36,7 +36,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"INSERT INTO [dbo].[Catalog] VALUES ('{cat.title}','{cat.communityName}','{cat.creator}')";
+                    var query = $"INSERT INTO [dbo].[Catalog] (title, commName, creator) VALUES ('{cat.title}','{cat.commName}','{cat.creator}')";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -47,8 +47,9 @@ namespace ComicsAPI.Processors
                     return true;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
@@ -85,7 +86,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<Comic>($"SELECT * FROM [dbo].[Comic] WHERE comicTitle = '{title}'").ToList()[0];
+                    return connection.Query<Comic>($"SELECT * FROM [dbo].[Comic] WHERE title = '{title}'").ToList()[0];
                 }
             }
             catch
@@ -136,8 +137,9 @@ namespace ComicsAPI.Processors
                     return true;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
@@ -190,7 +192,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"DELETE FROM [dbo].[Comic] WHERE chapterNum = {chapter.chapterNum} and comicTitle = {chapter.comicTitle}";
+                    var query = $"DELETE FROM [dbo].[Chapter] WHERE chapterNum = {chapter.chapterNum} and comicTitle = '{chapter.comicTitle}'";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -208,14 +210,14 @@ namespace ComicsAPI.Processors
         }
 
         //Get, Add, Remove, Modify Comment
-        public static Comment GetComment(int commentNum, int chapterNum, string comicTitle)
+        public static Comment GetComment(Comment comment)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<Comment>($"SELECT * FROM [dbo].[Comment] WHERE commentNum = {commentNum} and chapterNum = {chapterNum} and comicTitle = {comicTitle}").ToList()[0];
+                    return connection.Query<Comment>($"SELECT * FROM [dbo].[Comment] WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and comicTitle = '{comment.comicTitle}'").ToList()[0];
                 }
             }
             catch
@@ -248,14 +250,14 @@ namespace ComicsAPI.Processors
             }
         }
 
-        public static bool RemoveComment(int commentNum, int chapterNum, string comicTitle)
+        public static bool RemoveComment(Comment comment)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"DELETE FROM [dbo].[Comment] WHERE commentNum = {commentNum} and chapterNum = {chapterNum} and comicTitle = '{comicTitle}'";
+                    var query = $"DELETE FROM [dbo].[Comment] WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and comicTitle = '{comment.comicTitle}'";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -272,14 +274,14 @@ namespace ComicsAPI.Processors
             }
         }
 
-        public static bool EditComment(int commentNum, int chapterNum, string comicTitle, string body)
+        public static bool EditComment(Comment comment)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"UPDATE [dbo].[Comment] SET body = {body} WHERE commentNum = {commentNum} and chapterNum = {chapterNum} and comicTitle = '{comicTitle}'";
+                    var query = $"UPDATE [dbo].[Comment] SET body = '{comment.body}' WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and comicTitle = '{comment.comicTitle}'";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);

@@ -33,10 +33,10 @@ namespace ComicsAPI.Controllers
         }
 
         [HttpGet]
-        [Route("comic/chapter/comment/{commentNum}/{chapterNum}/{comicTitle}")]
-        public Comment GetComment(int commentNum, int chapterNum, string comicTitle)
+        [Route("comic/chapter/comment")]
+        public Comment GetComment(Comment comment)
         {
-            return CatalogProcessor.GetComment(commentNum,chapterNum,comicTitle);
+            return CatalogProcessor.GetComment(comment);
         }
 
         [HttpPost]
@@ -89,17 +89,17 @@ namespace ComicsAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("comic/chapter/comment/{commentNum}/{chapterNum}/{comicTitle}")]
-        public bool RemoveComment(int commentNum, int chapterNum, string comicTitle)
+        [Route("comic/chapter/comment")]
+        public bool RemoveComment(Comment comment)
         {
-            return CatalogProcessor.RemoveComment(commentNum,chapterNum,comicTitle);
+            return CatalogProcessor.RemoveComment(comment);
         }
 
         [HttpPut]
-        [Route("comic/chapter/comment/{commentNum}/{chapterNum}/{comicTitle}/{body}")]
-        public bool EditComment(int commentNum, int chapterNum, string comicTitle, string body)
+        [Route("comic/chapter/comment")]
+        public bool EditComment(Comment comment)
         {
-            return CatalogProcessor.EditComment(commentNum,chapterNum,comicTitle,body);
+            return CatalogProcessor.EditComment(comment);
         }
     }
 }
