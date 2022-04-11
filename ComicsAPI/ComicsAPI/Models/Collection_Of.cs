@@ -9,6 +9,6 @@ namespace ComicsAPI.Models
     {
         public string catalogueID { get; set; }
 
-        public string tag { get; set; }
+        public string comicTitle { get; set; }
     }
 }
