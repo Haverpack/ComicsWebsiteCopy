@@ -1,7 +1,7 @@
 ﻿/* REF: 
     https://www.youtube.com/watch?v=Ba-Ly1EQg2A
 */
-.container {
+.index_container {
     display: flex;
     justify-content: center;
     /*height: 700px;*/
@@ -9,9 +9,9 @@
 }
 
 .loginST {
-    background-color: rgb(255, 255, 255, 0.7);
+    background-color: beige;
     padding: 15px;
-    width: 350px;
+    width: 450px;
 }
 
 .flex-input {
@@ -33,15 +33,19 @@
 }
 
 input[type="text"], [type="password"] {
-    padding: 5px;
+    padding: 8px;
     font-size: 15px;
 }
 
+div > h1 {
+    display: flex;
+    flex-direction: column;
+}
+
 label {
-    flex-basis: 90px;
+    flex-basis: 80px;
     margin-top: 10px;
     font-size: 15px;
-    text-align: right;
 }
 
 input[type="buttton"] {

@@ -16,3 +16,8 @@ G:\Uni Projects\ComicsWebsite\ComicsDB\LocalComicsDB\obj\Debug\Model.xml
 G:\Uni Projects\ComicsWebsite\ComicsDB\LocalComicsDB\obj\Debug\refactor.xml
 G:\Uni Projects\ComicsWebsite\ComicsDB\LocalComicsDB\obj\Debug\postdeploy.sql
 G:\Uni Projects\ComicsWebsite\ComicsDB\LocalComicsDB\obj\Debug\predeploy.sql
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\bin\Debug\LocalComicsDB.dacpac
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\bin\Debug\LocalComicsDB.dll
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\bin\Debug\LocalComicsDB.pdb
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\obj\Debug\LocalComicsDB.dll
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsDB\LocalComicsDB\obj\Debug\LocalComicsDB.pdb
