@@ -63,6 +63,7 @@ namespace ComicsSite.Controllers
              * https://stackoverflow.com/questions/1330856/getting-http-status-code-number-200-301-404-etc-from-httpwebrequest-and-ht
              * https://stackoverflow.com/questions/1705442/generate-http-post-request-from-controller
              * https://stackoverflow.com/questions/1949610/how-can-i-catch-a-404
+             * https://www.youtube.com/watch?v=EyrKUSwi4uI
              * 
              * COOKIES (TO BE IMPLEMENTED):
              * https://stackoverflow.com/questions/57982185/httpresponse-set-cookies
@@ -96,6 +97,7 @@ namespace ComicsSite.Controllers
             }
             */
 
+            // GET REQUEST -- Above this is POST request (if we ever need it).
             try
             {
                 string url = "https://localhost:44366/user/" + userID + "/" + password;
@@ -106,6 +108,7 @@ namespace ComicsSite.Controllers
 
                 if (httpResponse.StatusCode.ToString() == "OK")
                 {
+                    Session["userID"] = userID;
                     return (View("Main"));
                 }
                 else
@@ -117,6 +120,15 @@ namespace ComicsSite.Controllers
             {
                 return (View("Signup"));
             }
+
+        }
+
+        public ActionResult htSOUT()
+        {
+            // Clear session
+            Session.Abandon();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
