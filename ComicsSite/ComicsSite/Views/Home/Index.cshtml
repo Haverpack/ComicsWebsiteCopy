@@ -25,8 +25,39 @@
        -- Create some API that signs the user in, and informs us that we should display something, somewhere.
        -- Notation: 'form' can't be nested inside of table. While it "works" in that it runs, this is bad practice. [RESOLVED]
 *@
+
 <body class="index_container">
-    <form id="login" method="get" action="https://localhost:44366/user/{userID}"
+    @using (Html.BeginForm("htSIN", "Home", FormMethod.Post))
+            {
+            <div class="loginST">
+                <h1>Account Login</h1>
+                <div class="flex-input">
+                    <Label for=""> Username: </Label>
+                    <input type="text" id="userID" name="userID">
+                </div>
+                <div class="flex-input">
+                    <Label for=""> Password: </Label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div>
+                    <input type="submit" value="Sign In" />
+                    <input type="button" value="Sign Up" onclick="location.href='@Url.Action("Signup", "Home")'" />
+                </div>
+                <div class="flex-container">
+                    <div>
+                        <input type="checkbox" name="" id="" />
+                        <span>Remember me</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <a href="#" style="text-align: right;">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
+            }
+</body>
+@*
+<body class="index_container">
+    <form id="login" method="get" action="https://localhost:44366/user/{userID}/{password}"
           enctype="application/x-www-form-urlencoded" class="loginST">
         <h1>Account Login</h1>
         <div class="flex-input">
@@ -45,7 +76,6 @@
             <div>
                 <input type="checkbox" name="" id="" />
                 <span>Remember me</span>
-                @*<a href="#" style="text-align: right;">Forgot Password?</a>*@
             </div>
             <div style="text-align: right;">
                 <a href="#" style="text-align: right;">Forgot Password?</a>
@@ -53,40 +83,6 @@
         </div>
     </form>
 </body>
+*@
 
 </html>
-@*
-<body>
-    <div>
-        <table style="margin:auto;margin-top:auto;margin-bottom:auto">
-            <form id="login" method="get" action="https://localhost:44366/user/{userID}"
-                  enctype="application/x-www-form-urlencoded">
-                <tr>
-                    <td>
-                        <Label> Username:  </Label>
-                    </td>
-                    <td>
-                        <input type="text" id="userID" name="userID">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <Label> Password:  </Label>
-                    </td>
-                    <td>
-                        <input type="password" id="password" name="password">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <Button> Sign In </Button>
-                    </td>
-            </form>
-                <td>
-                    <input type="button" value="Sign Up" onclick="location.href='@Url.Action("Signup", "Home")'" />
-                </td>
-            </tr>
-        </table>
-    </div>
-</body>
-*@

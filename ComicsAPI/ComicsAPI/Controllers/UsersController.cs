@@ -6,21 +6,47 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+//using System.Web.Mvc;
 
 namespace ComicsAPI.Controllers
 {
+    /*
+    public class UserControllersMVC : Controller
+    {
+        [System.Web.Mvc.HttpGet]
+        public ActionResult signIn(string userID, string password)
+        {
+            if (UserProcessor.signIn(userID, password)) {
+                return (RedirectToAction("Index"));
+            } else {
+                return RedirectToAction("Signup");
+            }
+
+        }
+    }
+    */
+
     public class UsersController : ApiController
     {
+
         [HttpGet]
         [Route("user/{userID}/{password}")]
-        public bool signIn(string userID, string password)
+        public IHttpActionResult signIn(string userID, string password)
         {
-            return UserProcessor.signIn(userID, password);
+            //return UserProcessor.signIn(userID, password);
+            if (UserProcessor.signIn(userID, password))
+            {
+                return Ok();
+            } else
+            {
+                return NotFound();
+            }
+            
         }
         
         // GET api/values/5
-        [HttpGet]
-        [Route("user/{userID}")]
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("user/{userID}")]
         public IEnumerable<string> GetAdmin(string userID)
         {
             User desired;
@@ -30,8 +56,8 @@ namespace ComicsAPI.Controllers
         }
 
         // POST api/values
-        [HttpPost]
-        [Route("user")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("user")]
         public void signUp(User user)
         {
             if (user == null)
@@ -44,8 +70,8 @@ namespace ComicsAPI.Controllers
         }
 
         // PUT api/values/5
-        [HttpPut]
-        [Route("user/{oldID}/{newID}")]
+        [System.Web.Http.HttpPut]
+        [System.Web.Http.Route("user/{oldID}/{newID}")]
         public string UpdateUserName(string oldID, string newID)
         {
             if(oldID == newID)
@@ -57,8 +83,8 @@ namespace ComicsAPI.Controllers
 
         }
 
-        [HttpPut]
-        [Route("user")]
+        [System.Web.Http.HttpPut]
+        [System.Web.Http.Route("user")]
         public string UpdateUserPW(User user)
         {
             try
@@ -73,8 +99,8 @@ namespace ComicsAPI.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete]
-        [Route("user/{userID}")]
+        [System.Web.Http.HttpDelete]
+        [System.Web.Http.Route("user/{userID}")]
         public string Delete(string userID)
         {
             try
@@ -88,8 +114,8 @@ namespace ComicsAPI.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("author/{userID}")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("author/{userID}")]
         public bool makeUserAuthor(string userID)
         {
             try
@@ -104,4 +130,5 @@ namespace ComicsAPI.Controllers
         }
 
     }
+
 }

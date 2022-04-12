@@ -1,4 +1,9 @@
-﻿/* REF: 
+﻿@model ComicsAPI.Models.User;
+@{
+    table-layout = null;
+}
+
+/* REF: 
     https://www.youtube.com/watch?v=Ba-Ly1EQg2A
 */
 .index_container {
