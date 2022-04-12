@@ -109,14 +109,42 @@ namespace ComicsSite.Controllers
                 if (httpResponse.StatusCode.ToString() == "OK")
                 {
                     Session["userID"] = userID;
-                    return (View("Main"));
-                }
-                else
-                {
-                    return (View("Signup"));
                 }
             }
             catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
+            {
+                // Empty, we just want to continue.
+            }
+
+            if (Session["userID"] == null)
+            {
+                try
+                {
+                    string url = "https://localhost:44366/admin/" + userID + "/" + password;
+                    HttpWebRequest httpRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                    httpRequest.Method = "GET";
+
+                    HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+
+                    if (httpResponse.StatusCode.ToString() == "OK")
+                    {
+                        Session["adminID"] = userID;
+                    }
+                }
+                catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // Empty, we just want to continue.
+                } 
+                catch (WebException ex1) when ((ex1.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    // Empty, we just want to continue.
+                }
+            }
+
+            if (Session["userID"] != null || Session["adminID"] != null)
+            {
+                return (View("Main"));
+            } else
             {
                 return (View("Signup"));
             }

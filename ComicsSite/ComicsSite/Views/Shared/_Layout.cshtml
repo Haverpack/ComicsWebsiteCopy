@@ -41,7 +41,7 @@
                     <li>@Html.ActionLink("Reader", "Reader", "Home")</li>
                     <li>@Html.ActionLink("Search", "Search", "Home")</li>
                     <li>@Html.ActionLink("Communities", "Community", "Home")</li>
-                    @if (Session["userID"] == null)
+                    @if (Session["userID"] == null && Session["adminID"] == null)
                     {
                         <li id="loginIndex">@Html.ActionLink("Login", "Index", "Home")</li>
                     }
@@ -55,6 +55,8 @@
                         @if (Session["userID"] != null)
                         {
                             <label style="color:aliceblue">Signed in As: @Session["userID"]</label>
+                        } else if (Session["adminID"] != null) { 
+                            <label style="color:aqua">Admin: @Session["adminID"]</label>
                         }
                     </li>
                 </ul>

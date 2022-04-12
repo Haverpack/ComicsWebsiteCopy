@@ -136,6 +136,20 @@ namespace ComicsAPI.Processors
 
         }
 
+        public static bool adSignIn(int adminID, string pw)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                List<User> check = connection.Query<User>($"SELECT * FROM [dbo].[Admin] WHERE adminID = {adminID} and password = '{pw}'").ToList();
+                if (check.Count == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
 
         public static Admin GetAdmin(int id)
         {

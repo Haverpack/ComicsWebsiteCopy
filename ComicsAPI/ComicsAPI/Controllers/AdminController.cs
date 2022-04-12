@@ -11,6 +11,24 @@ namespace ComicsAPI.Controllers
 {
     public class AdminController : ApiController
     {
+
+
+        [HttpGet]
+        [Route("admin/{adminID}/{password}")]
+        public IHttpActionResult adSignIn(int adminID, string password)
+        {
+            //return UserProcessor.signIn(userID, password);
+            if (UserProcessor.adSignIn(adminID, password))
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
