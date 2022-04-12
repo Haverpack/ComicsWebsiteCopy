@@ -7,9 +7,9 @@ namespace ComicsAPI.Models
 {
     public class Member_Of
     {
-        public string communityName { get; set; }
+        public string commName { get; set; }
 
-        public string memberID { get; set; }
+        public string userID { get; set; }
 
     }
 }

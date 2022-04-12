@@ -7,7 +7,7 @@ namespace ComicsAPI.Models
 {
     public class Comic_Tag
     {
-        public string comicID { get; set; }
+        public string comicTitle { get; set; }
 
         public string tag { get; set; }
 

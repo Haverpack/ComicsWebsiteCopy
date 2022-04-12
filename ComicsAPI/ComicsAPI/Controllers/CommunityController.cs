@@ -11,14 +11,6 @@ namespace ComicsAPI.Controllers
 {
     public class CommunityController : ApiController
     {
-        // GET api/values/5
-        [HttpGet]
-        [Route("community/{name}")]
-        public IEnumerable<string> TestCommunityExistence(string name)
-        {
-
-            return new string[] {};
-        }
 
         // POST api/<controller>
         [HttpPost]
@@ -27,7 +19,7 @@ namespace ComicsAPI.Controllers
         {
             try
             {
-                CommunityProcessor.createCommunity(community.name);
+                CommunityProcessor.createCommunity(community);
                 return true;
             }
             catch
@@ -37,6 +29,7 @@ namespace ComicsAPI.Controllers
         }
 
         // POST api/<controller>
+
         [HttpPost]
         [Route("community/forum/{writer}/{body}")]
         public bool createForum(Forum forum,string writer,string body)

@@ -16,5 +16,7 @@ namespace ComicsAPI.Models
         public DateTime Timestamp { get; set; }
 
         public string body { get; set; }
+
+        public string comicTitle { get; set; }
     }
 }

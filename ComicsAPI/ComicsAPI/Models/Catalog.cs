@@ -9,7 +9,7 @@ namespace ComicsAPI.Models
     {
         public string title { get; set; }
 
-        public string communityName { get; set; }
+        public string commName { get; set; }
 
         public string creator { get; set; }
     }

@@ -11,8 +11,7 @@ namespace ComicsAPI.Processors
     {
         //This file will deal with Community, Forum, And FComment Models
 
-        //TODO: Create a moderates relationship between community and person who created 
-        public static bool createCommunity(string name)
+        public static bool createCommunity(Community community)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
             try
@@ -20,12 +19,15 @@ namespace ComicsAPI.Processors
                 using (var connection = new SqlConnection(connectionString))
                 {
 
-                    var updateQuery = $"INSERT INTO [dbo].[Community] VALUES ('{name}')";
+                    var updateQuery = $"INSERT INTO [dbo].[Community] VALUES ('{community.name}')";
                     connection.Open();
                     SqlCommand command = new SqlCommand(updateQuery, connection);
                     command.ExecuteNonQuery();
                     command.Dispose();
                     connection.Close();
+
+                    ConnectionsProcessor.AddMember(new Member_Of {commName=community.name,userID=community.creator });
+                    ConnectionsProcessor.AddModerator(new Moderates { commName = community.name, userID = community.creator });
 
                 }
                 return true;
