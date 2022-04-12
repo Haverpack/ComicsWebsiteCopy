@@ -1,4 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@{
+    // If Session userID is null, redirect us to our index.
+    /*
+    Layout = null;
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~");
+    }
+    */
+
+}
+
+@*
+    REF: https://stackoverflow.com/questions/62423827/how-to-hide-log-in-and-sign-up-event-when-login-success-in-asp-net-mvc
+*@
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -23,11 +39,38 @@
                     <li>@Html.ActionLink("Main Page", "Main", "Home")</li>
                     <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
                     <li>@Html.ActionLink("Reader", "Reader", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Index", "Home")</li>
                     <li>@Html.ActionLink("Search", "Search", "Home")</li>
                     <li>@Html.ActionLink("Communities", "Community", "Home")</li>
+                    @if (Session["userID"] == null && Session["adminID"] == null)
+                    {
+                        <li id="loginIndex">@Html.ActionLink("Login", "Index", "Home")</li>
+                    }
+                    else
+                    {
+                        <li id="logoutIndex">@Html.ActionLink("Logout", "htSOUT", "Home")</li>
+                    }
+                </ul>
+                <ul class="nav pull-right">
+                    <li>
+                        @if (Session["userID"] != null)
+                        {
+                            <label style="color:aliceblue">Signed in As: @Session["userID"]</label>
+                        } else if (Session["adminID"] != null) { 
+                            <label style="color:aqua">Admin: @Session["adminID"]</label>
+                        }
+                    </li>
                 </ul>
             </div>
+            @*
+                <div class="navbar-collapse collapse" id="navbarSIN" style="text-align: right;">
+                    <ul class="nav pull-right">
+                        <li>
+                            <label >Signed in As: @Session["userID"]</label>
+                        </li>
+                    </ul>
+
+                </div>
+            *@
         </div>
     </div>
     <div class="container body-content">
