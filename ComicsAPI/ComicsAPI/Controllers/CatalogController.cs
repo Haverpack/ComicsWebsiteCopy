@@ -86,12 +86,16 @@ namespace ComicsAPI.Controllers
 
         [HttpGet]
         [Route("comic")]
-        public IHttpActionResult getComicTitles()
+        public List<Comic> getComicTitles()
         {
+            /*
             return new CustomOkResult<List<Comic>>(content: CatalogProcessor.getComicTitles(), controller: this)
             {
                 ETagValue = "ETV1"
             };
+            */
+            return (CatalogProcessor.getComicTitles());
+
         }
 
         [HttpPost]

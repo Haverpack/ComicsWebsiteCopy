@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
-    <div>@Html.ActionLink("RUN FUN", "viewComics", "Home")</div>
+    @*<div>@Html.ActionLink("RUN FUN", "viewComics", "Home")</div>*@
     <ul class="f2col">
+        @using ComicsAPI.Models
+        @foreach(Comic CM in (List<Comic>)Session["allComics"])
+            {
+                <li>
+                    <a href="https://localhost:44352/Home/Main">
+                        <img src=@CM.banner.ToString() />
+                    </a>
+                    <a href="https://localhost:44352/Home/Main">@CM.title</a>
+                </li>
+            }
+
+        @*
         <li>
             <a href="https://localhost:44352/Home/Main">
                 <img src="~/Images/Placeholder1.png" />
@@ -62,6 +74,7 @@
             </a>
             <a href="https://localhost:44352/Home/Main">Adventure Comic</a>
         </li>
+            *@
     </ul>
 </body>
 </html>

@@ -36,7 +36,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Main Page", "Main", "Home")</li>
+                    @*View Comics instead of "Main" so we get everything ready.*@
+                    <li>@Html.ActionLink("Main Page", "viewComics", "Home")</li>
                     <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
                     <li>@Html.ActionLink("Reader", "Reader", "Home")</li>
                     <li>@Html.ActionLink("Search", "Search", "Home")</li>

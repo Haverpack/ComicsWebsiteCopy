@@ -17,6 +17,12 @@ namespace ComicsSite.Controllers
 {
     public class HomeController : Controller
     {
+        private string PEntry(string Response)
+        {
+            string[] parse = Response.Split(':');
+            return (parse[1].Trim('"'));
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -174,25 +180,40 @@ namespace ComicsSite.Controllers
 
                 if (httpResponse.StatusCode.ToString() == "OK")
                 {
-                    /* NOT IT
-                    System.Diagnostics.Debug.WriteLine("ResponseCT: " + httpResponse.ContentType + "\n");
-                    System.Diagnostics.Debug.WriteLine("ResponseHead: " + httpResponse.Headers + "\n");
-                    System.Diagnostics.Debug.WriteLine("ResponseTS: " + httpResponse.ToString() + "\n");
-                    */
-                    WebHeaderCollection header = httpResponse.Headers;
+                    List<Comic> ComicsList = new List<Comic>();
 
-                    List<Comic> ComicsList;
+                    // REF:
+                    // https://stackoverflow.com/questions/3273205/read-text-from-response
+                    WebHeaderCollection header = httpResponse.Headers;
                     var encoding = ASCIIEncoding.ASCII;
+
                     using (var reader = new System.IO.StreamReader(httpResponse.GetResponseStream(), encoding))
                     {
                         string parsed = reader.ReadToEnd();
                         System.Diagnostics.Debug.WriteLine("ResponseCT: " + parsed + "\n");
 
+                        // REF:
+                        // https://stackoverflow.com/questions/46467258/c-sharp-split-string-and-remove-empty-string
+                        // https://docs.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
                         List<String> Comics = parsed.Split(new string[] { "{", "}", ",", "[", "]" },
                             StringSplitOptions.RemoveEmptyEntries).ToList();
-                        for(int i = 0; i < Comics.Count; i++)
+                        for(int i = 0; i < Comics.Count; i+= 4)
                         {
-                            System.Diagnostics.Debug.WriteLine("Index: " + i + " | Contains: " + Comics[i] + "\n");
+                            //System.Diagnostics.Debug.WriteLine("Index: " + i + " | Contains: " + Comics[i] + "\n");
+                            Comic CC = new Comic();
+                            CC.title = PEntry(Comics[i]);
+                            CC.pages = PEntry(Comics[i + 1]);
+                            CC.author = PEntry(Comics[i + 2]);
+                            CC.banner = PEntry(Comics[i + 3]);
+                            ComicsList.Add(CC);
+                        }
+
+                        // Store all comics in Session.
+                        Session["allComics"] = ComicsList;
+
+                        for (int i = 0; i < ComicsList.Count; i++)
+                        {
+                            System.Diagnostics.Debug.WriteLine(ComicsList[i].banner + "\n");
                         }
                     }
                 }
@@ -201,7 +222,7 @@ namespace ComicsSite.Controllers
             {
                 // Empty, we just want to continue.
             }
-            return (View("Index"));
+            return (View("Main"));
         }
     }
 }
