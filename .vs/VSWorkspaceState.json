@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ComicsAPI",
+    "\\ComicsAPI\\ComicsAPI",
+    "\\ComicsAPI\\ComicsAPI\\Controllers",
+    "\\ComicsAPI\\ComicsAPI\\Models",
+    "\\ComicsAPI\\ComicsAPI\\Processors"
   ],
-  "SelectedNode": "\\ComicsAPI.sln",
+  "SelectedNode": "\\ComicsAPI\\ComicsAPI\\Controllers\\CatalogController.cs",
   "PreviewInSolutionExplorer": false
 }
