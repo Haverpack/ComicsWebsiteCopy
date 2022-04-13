@@ -151,8 +151,6 @@ G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.WebPages.Depl
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.WebPages.dll
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.WebPages.Razor.dll
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\WebGrease.dll
-G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Http.dll
-G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Net.Http.Formatting.dll
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Http.WebHost.dll
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\Dapper.dll
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\ComicsAPI.pdb
@@ -263,3 +261,6 @@ C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsSite\ComicsSite\obj\Debug\Comics
 C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsSite\ComicsSite\obj\Debug\ComicsSite.csproj.CopyComplete
 C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsSite\ComicsSite\obj\Debug\ComicsSite.dll
 C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsSite\ComicsSite\obj\Debug\ComicsSite.pdb
+G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Http.Cors.dll
+G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Cors.dll
+G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Http.Cors.xml

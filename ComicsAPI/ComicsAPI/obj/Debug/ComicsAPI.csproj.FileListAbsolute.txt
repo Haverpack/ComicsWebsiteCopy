@@ -259,3 +259,6 @@ C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsAPI\ComicsAPI\obj\Debug\ComicsAP
 C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsAPI\ComicsAPI\obj\Debug\ComicsAPI.csproj.CopyComplete
 C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsAPI\ComicsAPI\obj\Debug\ComicsAPI.dll
 C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsAPI\ComicsAPI\obj\Debug\ComicsAPI.pdb
+G:\Uni Projects\ComicsWebsite\ComicsAPI\ComicsAPI\bin\System.Web.Cors.dll
+G:\Uni Projects\ComicsWebsite\ComicsAPI\ComicsAPI\bin\System.Web.Http.Cors.dll
+G:\Uni Projects\ComicsWebsite\ComicsAPI\ComicsAPI\bin\System.Web.Http.Cors.xml
