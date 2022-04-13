@@ -238,6 +238,107 @@ namespace ComicsAPI.Processors
             }
         }
 
+        public static string[] GetComicByTags(string[] tags)
+        {
+            string joined = String.Join(",", tags);
+            string joined2 = string.Join(",", joined.Split(',').Select(x => string.Format("'{0}'", x)).ToList());
+
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT c.title as comicTitle\n" +
+                                   "FROM[dbo].[Comic_Tag] ct\n" +
+                                   "JOIN[dbo].[Comic] c ON ct.comicTitle = c.title\n" +
+                                   $"WHERE ct.tag IN ({joined2})\n" +
+                                   "GROUP BY c.title\n" +
+                                   $"HAVING COUNT(DISTINCT ct.tag) = {tags.Count()}\n";
+                    List<Comic_Tag> result = connection.Query<Comic_Tag>(query).ToList();
+
+                    string[] toReturn = new string[result.Count];
+
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        toReturn[i] = result[i].comicTitle;
+                    }
+
+                    return toReturn;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
+        }
+
+        public static string[] GetCatalogByTags(string[] tags)
+        {
+            string joined = String.Join(",", tags);
+            string joined2 = string.Join(",", joined.Split(',').Select(x => string.Format("'{0}'", x)).ToList());
+
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT c.title as catalogTitle\n" +
+                                   "FROM[dbo].[Catalog_Tag] ct\n" +
+                                   "JOIN[dbo].[Catalog] c ON ct.catalogTitle = c.title\n" +
+                                   $"WHERE ct.tag IN ({joined2})\n" +
+                                   "GROUP BY c.title\n" +
+                                   $"HAVING COUNT(DISTINCT ct.tag) = {tags.Count()}\n";
+                    List<Catalog_Tag> result = connection.Query<Catalog_Tag>(query).ToList();
+
+                    string[] toReturn = new string[result.Count];
+
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        toReturn[i] = result[i].catalogTitle;
+                    }
+
+                    return toReturn;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
+        }
+
+        public static string[] GetTop15Comics()
+        {
+
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT TOP 15 title FROM [dbo].[Comic] ORDER BY title";
+                    List<Comic> result = connection.Query<Comic>(query).ToList();
+
+                    string[] toReturn = new string[result.Count];
+
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        toReturn[i] = result[i].title;
+                    }
+
+                    return toReturn;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
+        }
+
         public static bool AddCatalogTags(Catalog_Tag catTag)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
