@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.Results;
 
 namespace ComicsAPI.Controllers
 {
@@ -66,6 +68,33 @@ namespace ComicsAPI.Controllers
         {
             return ConnectionsProcessor.GetComictags(title);
         }
+
+        //------------------------------------------------------
+        //TESTING
+        [HttpGet]
+        [Route("comics/tags")]
+        [EnableCors(origins: "https://localhost:44352", headers: "*", methods: "*")]
+        public JsonResult<string[]> SortByComicTags([FromUri] string[] tags)
+        {
+            return Json<string[]>(ConnectionsProcessor.GetComicByTags(tags));
+        }
+
+        [HttpGet]
+        [Route("catalogs/tags")]
+        [EnableCors(origins: "https://localhost:44352", headers: "*", methods: "*")]
+        public JsonResult<string[]> SortByCatalogTags([FromUri] string[] tags)
+        {
+            return Json<string[]>(ConnectionsProcessor.GetCatalogByTags(tags));
+        }
+
+        [HttpGet]
+        [Route("comics/list")]
+        [EnableCors(origins: "https://localhost:44352", headers: "*", methods: "*")]
+        public JsonResult<string[]> GetTop15()
+        {
+            return Json<string[]>(ConnectionsProcessor.GetTop15Comics());
+        }
+        //------------------------------------------------------
 
         [HttpPost]
         [Route("subscriptions")]

@@ -7,24 +7,24 @@
     <script src="~/Scripts/Search.js"></script>
     <link href="~/Styles/Search.css" rel="stylesheet" />
     <title></title>
-</head> 
-<body>
+</head>
+<body onload="onStart()">
     <ul id="tags">
-        <li><label><input type="checkbox">Fantasy</label></li>
-        <li><label><input type="checkbox">Action</label></li>
-        <li><label><input type="checkbox">Drama</label></li>
-        <li><label><input type="checkbox">Thriller</label></li>
-        <li><label><input type="checkbox">Super-hero</label></li>
-        <li><label><input type="checkbox">Humor</label></li>
-        <li><label><input type="checkbox">Non-fiction</label></li>
-        <li><label><input type="checkbox">Slice-of-life</label></li>
-        <li><label><input type="checkbox">Horror</label></li>
-        <li><label><input type="checkbox">Romance</label></li>
-        <li><label><input type="checkbox">Sports</label></li>
-        <li><label><input type="checkbox">Mystery</label></li>
-        <li><label><input type="checkbox">Lovecraftian</label></li>
+        <li><label id=1><input type="checkbox" onclick="getClickedTag()">Fantasy</label></li>
+        <li><label id=2><input type="checkbox" onclick="getClickedTag()">Action</label></li>
+        <li><label id=3><input type="checkbox" onclick="getClickedTag()">Drama</label></li>
+        <li><label id=4><input type="checkbox" onclick="getClickedTag()">Thriller</label></li>
+        <li><label id=5><input type="checkbox" onclick="getClickedTag()">Super-hero</label></li>
+        <li><label id=6><input type="checkbox" onclick="getClickedTag()">Humor</label></li>
+        <li><label id=7><input type="checkbox" onclick="getClickedTag()">Non-fiction</label></li>
+        <li><label id=8><input type="checkbox" onclick="getClickedTag()">Slice-of-life</label></li>
+        <li><label id=9><input type="checkbox" onclick="getClickedTag()">Horror</label></li>
+        <li><label id=10><input type="checkbox" onclick="getClickedTag()">Romance</label></li>
+        <li><label id=11><input type="checkbox" onclick="getClickedTag()">Sports</label></li>
+        <li><label id=12><input type="checkbox" onclick="getClickedTag()">Mystery</label></li>
+        <li><label id=13><input type="checkbox" onclick="getClickedTag()">Lovecraftian</label></li>
     </ul>
-    
+
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 
     <ul id="myUL">
