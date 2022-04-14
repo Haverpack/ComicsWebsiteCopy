@@ -91,5 +91,12 @@ namespace ComicsAPI.Controllers
                 return false;
             }
         }
+
+        [HttpGet]
+        [Route("community")]
+        public List<Community> getCommunityNames()
+        {
+            return (CommunityProcessor.getCommunityNames());
+        }
     }
 }

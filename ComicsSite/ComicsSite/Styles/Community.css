@@ -4,13 +4,25 @@
     https://www.youtube.com/watch?v=vQAvjof1oe4&t=589s
 
 */
+
+#sideInput {
+    background-image: url('../Images/searchicon.png'); /* Add a search icon to input, Reference: https://www.kindpng.com/imgv/wTJbo_magnifying-glass-computer-icons-clip-art-clip-art/ */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
 .com_container {
     display: flex;
     /*This is what makes navbar centered.*/
     flex-direction: column;
     background-color:aqua;
 
-    min-width: 1000px;
+    min-width: 1250px;
     min-height: 1000px;
     flex: 1 0 auto;
 }
@@ -21,6 +33,12 @@
     margin: 10px;
     border: 3px solid #333;
     background-color: #dfdfdf;
+}
+
+.flexbox-sidebar {
+    min-height: 200px;
+    min-width: 600px;
+    max-height: 300px;
 }
 
 .flexbox-title {

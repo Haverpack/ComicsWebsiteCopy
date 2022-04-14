@@ -224,5 +224,61 @@ namespace ComicsSite.Controllers
             }
             return (View("Main"));
         }
+
+        public ActionResult viewCommunities()
+        {
+            // REF:
+            // https://stackoverflow.com/questions/1259934/store-list-to-session#:~:text=Yes%2C%20you%20can%20store%20any,%22test%22%5D%3B%20%2F%2F%20list.
+            try
+            {
+                string url = "https://localhost:44366/community/";
+                HttpWebRequest httpRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                httpRequest.Method = "GET";
+
+                HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+
+                if (httpResponse.StatusCode.ToString() == "OK")
+                {
+                    List<Community> CommunityList = new List<Community>();
+
+                    // REF:
+                    // https://stackoverflow.com/questions/3273205/read-text-from-response
+                    WebHeaderCollection header = httpResponse.Headers;
+                    var encoding = ASCIIEncoding.ASCII;
+
+                    using (var reader = new System.IO.StreamReader(httpResponse.GetResponseStream(), encoding))
+                    {
+                        string parsed = reader.ReadToEnd();
+                        System.Diagnostics.Debug.WriteLine("ResponseCT: " + parsed + "\n");
+
+                        // REF:
+                        // https://stackoverflow.com/questions/46467258/c-sharp-split-string-and-remove-empty-string
+                        // https://docs.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
+                        List<String> Communities = parsed.Split(new string[] { "{", "}", ",", "[", "]" },
+                            StringSplitOptions.RemoveEmptyEntries).ToList();
+                        for (int i = 0; i < Communities.Count; i += 2)
+                        {
+                            Community CC = new Community();
+                            CC.name = PEntry(Communities[i]);
+                            CC.creator = PEntry(Communities[i + 1]);
+                            CommunityList.Add(CC);
+                        }
+
+                        // Store all comics in Session.
+                        Session["allCommunity"] = CommunityList;
+
+                        for (int i = 0; i < CommunityList.Count; i++)
+                        {
+                            System.Diagnostics.Debug.WriteLine(CommunityList[i].name + "\n");
+                        }
+                    }
+                }
+            }
+            catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
+            {
+                // Empty, we just want to continue.
+            }
+            return (View("Community"));
+        }
     }
 }
