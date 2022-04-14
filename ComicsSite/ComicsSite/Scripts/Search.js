@@ -35,7 +35,7 @@ function Logger(content) {
         var item = document.createElement('li');
         var item2 = document.createElement('a');
         item2.id = i + 14;
-        item2.href = "https://localhost:44352/Home/Reader";
+        //item2.href = "https://localhost:44352/Home/Reader";
         item2.setAttribute("onclick", "callController(this.id)");
         console.log(item2.id);
         //console.log(item2.href);
@@ -117,16 +117,6 @@ function onStart() {
 
 function callController(id) {
     value = document.getElementById(id).innerText;
-    /*$.ajax({
-        url: '@Url.Action("SetCurrentComic", "Home")',
-        type: 'POST',
-        dataType: 'json',
-        cache: false,
-        data: { value: value },
-        error: function () {
-            alert('Error occured');
-        }
-    });*/
 
     $.ajax({
         url: 'SetCurrentComic',
@@ -135,14 +125,11 @@ function callController(id) {
         cache: false,
         dataType: 'application/json',
         async: true,
-        processData: true,
-        success: function (data) {
-            console.log("success");
-            //var translate = JSON.stringify(data);
-            //Logger(translate);
-        },
-        error: function (data) {
-            alert('Error occured');
-        }
     });
+
+    setTimeout(function () {
+        window.location = "https://localhost:44352/Home/Reader";
+    }, 1000);
+
+    //window.location.href = "https://localhost:44352/Home/Reader";
 }

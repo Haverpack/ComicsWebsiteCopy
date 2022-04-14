@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 /*
  * REF:
@@ -64,10 +65,52 @@ namespace ComicsSite.Controllers
         }
 
         //--------------------------------------------------------------------------
+        public ActionResult FirstPage()
+        {
+            Session["pageNum"] = 1;
+            return View("Reader");
+        }
+
+        public ActionResult DecrementPage()
+        {
+            var temp = (int)Session["pageNum"];
+            temp -= 1;
+            if(temp < 1)
+            {
+                temp = 1;
+            }
+            Session["pageNum"] = temp;
+            return View("Reader");
+        }
+
+        public ActionResult IncrementPage()
+        {
+            var temp = (int)Session["pageNum"];
+            temp += 1;
+            if (!System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{temp}.png")))
+            {
+                temp -= 1;
+            }
+            Session["pageNum"] = temp;
+            return View("Reader");
+        }
+        public ActionResult LastPage()
+        {
+            var temp = (int)Session["pageNum"];
+            while(System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{temp}.png")))
+            {
+                temp++;
+            }
+            temp--;
+            Session["pageNum"] = temp;
+            return View("Reader");
+        }
+
         [HttpPost]
         public ActionResult SetCurrentComic(string title)
         {
             Session["CurrentComic"] = title;
+            Session["pageNum"] = 1;
             Debug.Print((string)Session["CurrentComic"]);
             return View("Reader");
         }
@@ -78,9 +121,21 @@ namespace ComicsSite.Controllers
         {
             try
             {
+                if(!Directory.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}")))
+                {
+                    Directory.CreateDirectory(Server.MapPath($"~/Images/{Session["CurrentComic"]}"));
+                }
                 if (file.ContentLength > 0)
                 {
-                    string _FileName = Path.GetFileName(file.FileName);
+                    string _FileName = "1.png";
+                    int i = 1;
+                    
+                    while(System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{i}.png")))
+                    {
+                        i++;
+                        _FileName = i.ToString() + ".png";
+                    }
+
                     string _path = Path.Combine(Server.MapPath($"~/Images/{Session["CurrentComic"]}"), _FileName);
                     file.SaveAs(_path);
                 }

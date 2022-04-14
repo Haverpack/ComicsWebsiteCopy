@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var imagePath = $"../Images/{(string)Session["CurrentComic"]}/{(int)Session["pageNum"]}.png";
+    if(!System.IO.File.Exists(Server.MapPath(imagePath)))
+    {
+        imagePath = $"../Images/{(string)Session["CurrentComic"]}/{(int)Session["pageNum"]}.jpg";
+            }
+    }
+
+<!DOCTYPE html>
 <html>
 <head>
     <link href="~/Styles/Reader.css" rel="stylesheet" />
@@ -7,16 +15,16 @@
     <div id="middle_container" class="box">
         <ul class="comicNav">
             <li>
-                <a> << </a>
+                <a href ="#" onclick="location.href='@Url.Action("FirstPage", "Home")'" > << </a>
             </li>
             <li>
-                <a> < </a>
+                <a href ="#" onclick="location.href='@Url.Action("DecrementPage", "Home")'" > < </a>
             </li>
             <li>
-                <a> > </a>
+                <a href ="#" onclick="location.href='@Url.Action("IncrementPage", "Home")'" > > </a>
             </li>
             <li>
-                <a> >> </a>
+                <a href ="#" onclick="location.href='@Url.Action("LastPage", "Home")'" > >> </a>
             </li>
             <li>
                 <select>
@@ -33,7 +41,11 @@
             </li>
         </ul>
         <div id="comic">
-            <img src="~/Images/spacecraft_debris_odds_ratio.png" title="Placeholder image from https://xkcd.com/2599/" />
+            <img id ="image"src=@imagePath title="Placeholder image from https://xkcd.com/2599/" />
+            <script>
+                console.log(document.getElementById("image").src);
+            </script>
+
         </div>
     </div>
 
