@@ -67,6 +67,106 @@ namespace ComicsSite.Controllers
             return View();
         }
 
+        public ActionResult SetTags()
+        {
+            return View();
+        }
+        //-----------------------------------------------
+
+        public ActionResult FirstPage()
+        {
+            Session["pageNum"] = 1;
+            return View("Reader");
+        }
+
+        public ActionResult DecrementPage()
+        {
+            var temp = (int)Session["pageNum"];
+            temp -= 1;
+            if (temp < 1)
+            {
+                temp = 1;
+            }
+            Session["pageNum"] = temp;
+            return View("Reader");
+        }
+
+        public ActionResult IncrementPage()
+        {
+            var temp = (int)Session["pageNum"];
+            temp += 1;
+            if (!System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{temp}.png")))
+            {
+                temp -= 1;
+            }
+            Session["pageNum"] = temp;
+            return View("Reader");
+        }
+        public ActionResult LastPage()
+        {
+            var temp = (int)Session["pageNum"];
+            while (System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{temp}.png")))
+            {
+                temp++;
+            }
+            temp--;
+            Session["pageNum"] = temp;
+            return View("Reader");
+        }
+
+        [HttpPost]
+        public ActionResult SetCurrentComic(string title)
+        {
+            title = title.Replace(" ", "_");
+            Session["CurrentComic"] = title;
+            Session["pageNum"] = 1;
+            return View("Reader");
+        }
+
+        public ActionResult SetCurrentComicFromMain(string title)
+        {
+            title = title.Replace(" ", "_");
+            Session["CurrentComic"] = title;
+            Session["pageNum"] = 1;
+            return View("Reader");
+        }
+
+        //Reference: https://www.c-sharpcorner.com/article/upload-files-in-asp-net-mvc-5/
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase file)
+        {
+            try
+            {
+                if (!Directory.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}")))
+                {
+                    Directory.CreateDirectory(Server.MapPath($"~/Images/{Session["CurrentComic"]}"));
+                }
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = "1.png";
+                    int i = 1;
+
+                    while (System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{i}.png")))
+                    {
+                        i++;
+                        _FileName = i.ToString() + ".png";
+                    }
+
+                    string _path = Path.Combine(Server.MapPath($"~/Images/{Session["CurrentComic"]}"), _FileName);
+                    file.SaveAs(_path);
+                }
+                ViewBag.Message = "File Uploaded Successfully!!";
+                return View("Reader");
+            }
+            catch
+            {
+                ViewBag.Message = "File upload failed!!";
+                return View("Reader");
+            }
+        }
+
+        //-----------------------------------------------
+
         [HttpPost]
         public ActionResult htSIN(string userID, string password)
         {
