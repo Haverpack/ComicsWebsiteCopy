@@ -1,6 +1,7 @@
 ﻿using ComicsAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -61,6 +62,40 @@ namespace ComicsSite.Controllers
         {
             return View();
         }
+
+        //--------------------------------------------------------------------------
+        [HttpPost]
+        public ActionResult SetCurrentComic(string title)
+        {
+            Session["CurrentComic"] = title;
+            Debug.Print((string)Session["CurrentComic"]);
+            return View("Reader");
+        }
+
+        //Reference: https://www.c-sharpcorner.com/article/upload-files-in-asp-net-mvc-5/
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath($"~/Images/{Session["CurrentComic"]}"), _FileName);
+                    file.SaveAs(_path);
+                }
+                ViewBag.Message = "File Uploaded Successfully!!";
+                return View("Reader");
+            }
+            catch
+            {
+                ViewBag.Message = "File upload failed!!";
+                return View("Reader");
+            }
+        }
+
+        //---------------------------------------------------------------------------
+
 
         [HttpPost]
         public ActionResult htSIN(string userID, string password)

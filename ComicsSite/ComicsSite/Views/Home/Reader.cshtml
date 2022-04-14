@@ -33,8 +33,18 @@
             </li>
         </ul>
         <div id="comic">
-            <img src="~/Images/spacecraft_debris_odds_ratio.png" title="Placeholder image from https://xkcd.com/2599/"/>
+            <img src="~/Images/spacecraft_debris_odds_ratio.png" title="Placeholder image from https://xkcd.com/2599/" />
         </div>
     </div>
+
+    <!--Reference: https://www.c-sharpcorner.com/article/upload-files-in-asp-net-mvc-5/-->
+    @using (Html.BeginForm("UploadFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            @Html.TextBox("file", "", new { type = "file" }) <br />
+            <input type="submit" value="Upload" />
+            @ViewBag.Message
+        </div>
+    }
 </body>
 </html>
