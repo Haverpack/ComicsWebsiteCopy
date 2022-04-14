@@ -41,7 +41,7 @@
                     <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
                     <li>@Html.ActionLink("Reader", "Reader", "Home")</li>
                     <li>@Html.ActionLink("Search", "Search", "Home")</li>
-                    <li>@Html.ActionLink("Communities", "Community", "Home")</li>
+                    <li>@Html.ActionLink("Communities", "viewCommunities", "Home")</li>
                     @if (Session["userID"] == null && Session["adminID"] == null)
                     {
                         <li id="loginIndex">@Html.ActionLink("Login", "Index", "Home")</li>

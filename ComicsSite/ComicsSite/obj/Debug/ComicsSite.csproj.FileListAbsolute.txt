@@ -264,3 +264,6 @@ C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsSite\ComicsSite\obj\Debug\Comics
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Http.Cors.dll
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Cors.dll
 G:\Uni Projects\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Http.Cors.xml
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Http.Cors.dll
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Cors.dll
+C:\Users\Ec_71\Source\Repos\ComicsWebsite\ComicsSite\ComicsSite\bin\System.Web.Http.Cors.xml
