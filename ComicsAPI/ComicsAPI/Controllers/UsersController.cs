@@ -10,21 +10,6 @@ using System.Web.Http;
 
 namespace ComicsAPI.Controllers
 {
-    /*
-    public class UserControllersMVC : Controller
-    {
-        [System.Web.Mvc.HttpGet]
-        public ActionResult signIn(string userID, string password)
-        {
-            if (UserProcessor.signIn(userID, password)) {
-                return (RedirectToAction("Index"));
-            } else {
-                return RedirectToAction("Signup");
-            }
-
-        }
-    }
-    */
 
     public class UsersController : ApiController
     {
