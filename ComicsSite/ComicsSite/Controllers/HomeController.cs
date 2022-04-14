@@ -1,14 +1,12 @@
 ﻿using ComicsAPI.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
 
 /*
  * REF:
@@ -39,11 +37,8 @@ namespace ComicsSite.Controllers
 
         public ActionResult Reader()
         {
-            if(Session["CurrentComic"] == null || Session["pageNum"] == null)
-            {
-                Session["CurrentComic"] = "AdventureComic";
-                Session["pageNum"] = 1;
-            }
+            ViewBag.Message = "Your contact page.";
+
             return View();
         }
 
@@ -67,108 +62,10 @@ namespace ComicsSite.Controllers
             return View();
         }
 
-        public ActionResult SetTags()
+        public ActionResult Review()
         {
             return View();
         }
-
-        //--------------------------------------------------------------------------
-        public ActionResult FirstPage()
-        {
-            Session["pageNum"] = 1;
-            return View("Reader");
-        }
-
-        public ActionResult DecrementPage()
-        {
-            var temp = (int)Session["pageNum"];
-            temp -= 1;
-            if(temp < 1)
-            {
-                temp = 1;
-            }
-            Session["pageNum"] = temp;
-            return View("Reader");
-        }
-
-        public ActionResult IncrementPage()
-        {
-            var temp = (int)Session["pageNum"];
-            temp += 1;
-            if (!System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{temp}.png")))
-            {
-                temp -= 1;
-            }
-            Session["pageNum"] = temp;
-            return View("Reader");
-        }
-        public ActionResult LastPage()
-        {
-            var temp = (int)Session["pageNum"];
-            while(System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{temp}.png")))
-            {
-                temp++;
-            }
-            temp--;
-            Session["pageNum"] = temp;
-            return View("Reader");
-        }
-
-        [HttpPost]
-        public ActionResult SetCurrentComic(string title)
-        {
-            title = title.Replace(" ","_");
-            Session["CurrentComic"] = title;
-            Session["pageNum"] = 1;
-            Debug.Print((string)Session["CurrentComic"]);
-            return View("Reader");
-        }
-
-        public ActionResult SetCurrentComicFromMain(string title)
-        {
-            title = title.Replace(" ", "_");
-            Session["CurrentComic"] = title;
-            Session["pageNum"] = 1;
-            Debug.Print((string)Session["CurrentComic"]);
-            return View("Reader");
-        }
-
-        //Reference: https://www.c-sharpcorner.com/article/upload-files-in-asp-net-mvc-5/
-        [HttpPost]
-        public ActionResult UploadFile(HttpPostedFileBase file)
-        {
-            try
-            {
-                if(!Directory.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}")))
-                {
-                    Directory.CreateDirectory(Server.MapPath($"~/Images/{Session["CurrentComic"]}"));
-                }
-                if (file.ContentLength > 0)
-                {
-                    string _FileName = "1.png";
-                    int i = 1;
-                    
-                    while(System.IO.File.Exists(Server.MapPath($"~/Images/{Session["CurrentComic"]}/{i}.png")))
-                    {
-                        i++;
-                        _FileName = i.ToString() + ".png";
-                    }
-
-                    string _path = Path.Combine(Server.MapPath($"~/Images/{Session["CurrentComic"]}"), _FileName);
-                    file.SaveAs(_path);
-                }
-                ViewBag.Message = "File Uploaded Successfully!!";
-                return View("Reader");
-            }
-            catch
-            {
-                ViewBag.Message = "File upload failed!!";
-                return View("Reader");
-            }
-        }
-
-        //---------------------------------------------------------------------------
-
 
         [HttpPost]
         public ActionResult htSIN(string userID, string password)
@@ -244,6 +141,7 @@ namespace ComicsSite.Controllers
                     if (httpResponse.StatusCode.ToString() == "OK")
                     {
                         Session["adminID"] = userID;
+                        curViewAdminReports(userID, password);
                     }
                 }
                 catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
@@ -258,7 +156,7 @@ namespace ComicsSite.Controllers
 
             if (Session["userID"] != null || Session["adminID"] != null)
             {
-                return (View("Main"));
+                return (viewComics());
             } else
             {
                 return (View("Signup"));
@@ -298,7 +196,7 @@ namespace ComicsSite.Controllers
                     using (var reader = new System.IO.StreamReader(httpResponse.GetResponseStream(), encoding))
                     {
                         string parsed = reader.ReadToEnd();
-                        System.Diagnostics.Debug.WriteLine("ResponseCT: " + parsed + "\n");
+                        //System.Diagnostics.Debug.WriteLine("ResponseCT: " + parsed + "\n");
 
                         // REF:
                         // https://stackoverflow.com/questions/46467258/c-sharp-split-string-and-remove-empty-string
@@ -318,11 +216,6 @@ namespace ComicsSite.Controllers
 
                         // Store all comics in Session.
                         Session["allComics"] = ComicsList;
-
-                        for (int i = 0; i < ComicsList.Count; i++)
-                        {
-                            System.Diagnostics.Debug.WriteLine(ComicsList[i].banner + "\n");
-                        }
                     }
                 }
             }
@@ -390,7 +283,7 @@ namespace ComicsSite.Controllers
             // https://stackoverflow.com/questions/1259934/store-list-to-session#:~:text=Yes%2C%20you%20can%20store%20any,%22test%22%5D%3B%20%2F%2F%20list.
             try
             {
-                string url = "https://localhost:44366/report/" + adminID + "/" + password;
+                string url = "https://localhost:44366/report/" + adminID + "/"+ password;
                 HttpWebRequest httpRequest = (HttpWebRequest)HttpWebRequest.Create(url);
                 httpRequest.Method = "GET";
 
@@ -415,7 +308,7 @@ namespace ComicsSite.Controllers
                         // https://docs.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
                         List<string> Reports = parsed.Split(new string[] { "{", "}", ",", "[", "]" },
                             StringSplitOptions.RemoveEmptyEntries).ToList();
-                        for (int i = 0; i < Reports.Count; i += 6)
+                        for (int i = 0; i < Reports.Count; i+=6)
                         {
                             System.Diagnostics.Debug.WriteLine("Index: " + i + " | Contains: " + Reports[i] + "\n");
                             Report CR = new Report();

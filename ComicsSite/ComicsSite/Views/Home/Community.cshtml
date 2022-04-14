@@ -15,6 +15,7 @@
 
 <head>
     <link href="~/Styles/Community.css" rel="stylesheet" />
+    <script src="~/Scripts/Search.js"></script>
 </head>
 
 <body>
@@ -23,33 +24,26 @@
             <h1>Communities</h1>
         </div>
         <div class="content-sidebar">
-            <div class="flexbox-item"></div>
+            <div class="flexbox-item flexbox-sidebar">
+                @*Sidebar*@
+                <input type="text" id="sideInput" onkeyup="comFunction()" placeholder="Search for communities..">
+            </div>
             <div class="flexbox-item">
-                <ul class="f2col">
-                    <li>
-                        <a href="https://localhost:44352/Home/Community">
-                            <img src="~/Images/Placeholder1.png" />
-                        </a>
-                        <a href="https://localhost:44352/Home/Community">Fantasy Community</a>
-                    </li>
-                    <li>
-                        <a href="https://localhost:44352/Home/Community">
-                            <img src="~/Images/Placeholder2.png" />
-                        </a>
-                        <a href="https://localhost:44352/Home/Community">Sports Community</a>
-                    </li>
-                    <li>
-                        <a href="https://localhost:44352/Home/Community">
-                            <img src="~/Images/PlaceHolder3.png" />
-                        </a>
-                        <a href="https://localhost:44352/Home/Community">Action Community</a>
-                    </li>
-                    <li>
-                        <a href="https://localhost:44352/Home/Community">
-                            <img src="~/Images/PlaceHolder4.png" />
-                        </a>
-                        <a href="https://localhost:44352/Home/Community">Tragic Community</a>
-                    </li>
+                @using ComicsAPI.Models
+                <ul class="f2col" id="fullComs">
+                    @if (Session["allCommunity"] != null)
+                    {
+                        foreach (Community COM in (List<Community>)Session["allCommunity"])
+                        {
+                            <li>
+                                <a href="https://localhost:44352/Home/Community">@COM.name</a>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Try Again", "viewCommunities", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>

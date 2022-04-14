@@ -38,10 +38,10 @@
                 <ul class="nav navbar-nav">
                     @*View Comics instead of "Main" so we get everything ready.*@
                     <li>@Html.ActionLink("Main Page", "viewComics", "Home")</li>
+                    <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
                     <li>@Html.ActionLink("Reader", "Reader", "Home")</li>
                     <li>@Html.ActionLink("Search", "Search", "Home")</li>
                     <li>@Html.ActionLink("Communities", "viewCommunities", "Home")</li>
-                    <li>@Html.ActionLink("Set Tags", "SetTags", "Home")</li>
                     @if (Session["userID"] == null && Session["adminID"] == null)
                     {
                         <li id="loginIndex">@Html.ActionLink("Login", "Index", "Home")</li>
@@ -49,6 +49,10 @@
                     else
                     {
                         <li id="logoutIndex">@Html.ActionLink("Logout", "htSOUT", "Home")</li>
+                    }
+                    @if (Session["adminID"] != null)
+                    {
+                        <li id="reviewIndex">@Html.ActionLink("Review Reports", "Review", "Home")</li>
                     }
                 </ul>
                 <ul class="nav pull-right">

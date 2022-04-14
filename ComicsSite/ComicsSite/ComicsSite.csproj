@@ -155,8 +155,8 @@
     <Content Include="Images\searchicon.png" />
     <Content Include="Images\spacecraft_debris_odds_ratio.png" />
     <Content Include="Images\spacecraft_debris_odds_ratio_2x.png" />
-    <Content Include="Scripts\SetTags.js" />
     <Content Include="Scripts\Search.js" />
+    <Content Include="Styles\Review.css" />
     <Content Include="Styles\Main.css" />
     <Content Include="Styles\Reader.css" />
     <Content Include="favicon.ico" />
@@ -198,7 +198,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\Community.cshtml" />
-    <Content Include="Views\Home\SetTags.cshtml" />
+    <Content Include="Views\Home\Review.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

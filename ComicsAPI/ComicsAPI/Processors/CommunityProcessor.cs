@@ -1,4 +1,5 @@
 ﻿using ComicsAPI.Models;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -62,6 +63,28 @@ namespace ComicsAPI.Processors
                 return false;
             }
 
+        }
+
+        public static List<Community> getCommunityNames()
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+
+                    string query = $"SELECT * \n" +
+                                    "FROM [dbo].[Community] \n";
+                    List<Community> result = connection.Query<Community>(query).ToList();
+                    return (result);
+
+                }
+            }
+            catch
+            {
+                return (null);
+            }
         }
 
         public static bool createForum(Forum forum, string writer, string body)

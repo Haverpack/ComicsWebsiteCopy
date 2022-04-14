@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+
+@*
+    Admin Review Page [Accessible only when signed in to Admin via Layout]
+    REF: https://www.youtube.com/watch?v=vQAvjof1oe4&t=589s
+
+    TODO:
+*@
+
+<head>
+    <link href="~/Styles/Review.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="com_container">
+        <div class="flexbox-title">
+            <h1 style="color:white;">Reviews</h1>
+        </div>
+        <div class="content-sidebar">
+            </div>
+            <div class="flexbox-item">
+                @using ComicsAPI.Models
+                <ul class="f2col">
+                    @if (Session["allReports"] != null)
+                    {
+                        foreach (Report REP in (List<Report>)Session["allReports"])
+                        {
+                            <li>
+                                <a href="https://localhost:44352/Home/Community">
+                                    Report: @REP.reportNum | Timestamp: @REP.timeStamp
+                                </a>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("None Found: Sign Out", "htSOUT", "Home")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
