@@ -1,4 +1,5 @@
 ﻿const { post } = require("jquery");
+var currentComic;
 
 //Reference: https://www.w3schools.com/howto/howto_js_filter_lists.asp
 function myFunction() {
@@ -7,29 +8,6 @@ function myFunction() {
     input = document.getElementById('myInput');
     filter = input.value.toUpperCase();
     ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName('li');
-
-    //Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-
-
-}
-
-//Reference: https://www.w3schools.com/howto/howto_js_filter_lists.asp
-function comFunction() {
-    // Declare variables
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById('sideInput');
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("fullComs");
     li = ul.getElementsByTagName('li');
 
     //Loop through all list items, and hide those who don't match the search query
@@ -59,7 +37,7 @@ function Logger(content) {
         var item2 = document.createElement('a');
         item2.id = i + 14;
         //item2.href = "https://localhost:44352/Home/Reader";
-        item2.setAttribute("onclick", "callController(this.id)");
+        item2.setAttribute("onclick", "SetCurrentComic(this.id)");
         console.log(item2.id);
         //console.log(item2.href);
 
@@ -72,7 +50,21 @@ function Logger(content) {
     document.getElementById("myUL").innerHTML = list.innerHTML;
 }
 
-function getClickedTag(cont) {
+function SetCurrentComic(id) {
+    currentComic = document.getElementById(id).innerText;
+    console.log(currentComic);
+
+    var list = document.createElement('ul');
+    var item = document.createElement('li');
+    var statement = "Currently settings tags For: " + currentComic;
+
+    item.appendChild(document.createTextNode(statement));
+    list.appendChild(item);
+
+    document.getElementById("currCom").innerHTML = list.innerHTML;
+}
+
+function getClickedTag() {
     var i;
     var arr = []
 
@@ -84,12 +76,14 @@ function getClickedTag(cont) {
 
     }
 
-    if (arr.length > 0) {
+    return arr;
+
+    /*if (arr.length > 0) {
         tagFilter(arr);
     }
     else {
         onStart();
-    }
+    }*/
 }
 
 function tagFilter(tags) {
@@ -138,21 +132,23 @@ function onStart() {
     });
 }
 
-function callController(id) {
-    value = document.getElementById(id).innerText;
+function callController() {
+    var tags = getClickedTag();
+    var i;
 
-    $.ajax({
-        url: 'SetCurrentComic',
-        type: 'POST',
-        data: { 'title': value },
-        cache: false,
-        dataType: 'application/json',
-        async: true,
-    });
+    
+    for (i = 0; i < tags.length; i++) {
+        
+        $.ajax({
+            url: 'https://localhost:44366/comic/tag',
+            type: 'POST',
+            data: { 'comicTitle': currentComic , 'tag': tags[i]},
+            cache: false,
+            dataType: 'application/json',
+            async: true,
+        });
+    }
 
-    setTimeout(function () {
-        window.location = "https://localhost:44352/Home/Reader";
-    }, 1000);
+    
 
-    //window.location.href = "https://localhost:44352/Home/Reader";
 }

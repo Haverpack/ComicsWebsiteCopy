@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var imagePath = $"../Images/{(string)Session["CurrentComic"]}/{(int)Session["pageNum"]}.png";
+    //var imagePath = "../Images/JFrasersWebseries/1.png";
+    if(!System.IO.File.Exists(Server.MapPath(imagePath)))
+    {
+        imagePath = $"../Images/{(string)Session["CurrentComic"]}/{(int)Session["pageNum"]}.jpg";
+    }
+    }
+
+<!DOCTYPE html>
 <html>
 <head>
     <link href="~/Styles/Reader.css" rel="stylesheet" />
@@ -7,16 +16,16 @@
     <div id="middle_container" class="box">
         <ul class="comicNav">
             <li>
-                <a> << </a>
+                <a href ="#" onclick="location.href='@Url.Action("FirstPage", "Home")'" > << </a>
             </li>
             <li>
-                <a> < </a>
+                <a href ="#" onclick="location.href='@Url.Action("DecrementPage", "Home")'" > < </a>
             </li>
             <li>
-                <a> > </a>
+                <a href ="#" onclick="location.href='@Url.Action("IncrementPage", "Home")'" > > </a>
             </li>
             <li>
-                <a> >> </a>
+                <a href ="#" onclick="location.href='@Url.Action("LastPage", "Home")'" > >> </a>
             </li>
             <li>
                 <select>
@@ -33,8 +42,23 @@
             </li>
         </ul>
         <div id="comic">
-            <img src="~/Images/spacecraft_debris_odds_ratio.png" title="Placeholder image from https://xkcd.com/2599/"/>
+            <img id ="image"src=@imagePath title="Couldn't find any pages associated with this comic! Try adding some." />
+            <script>
+                console.log(document.getElementById("image").src);
+            </script>
+
         </div>
     </div>
+
+    <!--Reference: https://www.c-sharpcorner.com/article/upload-files-in-asp-net-mvc-5/-->
+    @using (Html.BeginForm("UploadFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <br />
+            @Html.TextBox("file", "", new { type = "file" }) <br />
+            <input type="submit" value="Upload" />
+            @ViewBag.Message
+        </div>
+    }
 </body>
 </html>
