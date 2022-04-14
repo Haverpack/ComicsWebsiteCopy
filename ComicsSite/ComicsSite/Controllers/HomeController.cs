@@ -117,6 +117,16 @@ namespace ComicsSite.Controllers
         [HttpPost]
         public ActionResult SetCurrentComic(string title)
         {
+            title = title.Replace(" ","_");
+            Session["CurrentComic"] = title;
+            Session["pageNum"] = 1;
+            Debug.Print((string)Session["CurrentComic"]);
+            return View("Reader");
+        }
+
+        public ActionResult SetCurrentComicFromMain(string title)
+        {
+            title = title.Replace(" ", "_");
             Session["CurrentComic"] = title;
             Session["pageNum"] = 1;
             Debug.Print((string)Session["CurrentComic"]);

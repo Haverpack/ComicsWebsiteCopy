@@ -1,9 +1,10 @@
 ﻿@{ 
     var imagePath = $"../Images/{(string)Session["CurrentComic"]}/{(int)Session["pageNum"]}.png";
+    //var imagePath = "../Images/JFrasersWebseries/1.png";
     if(!System.IO.File.Exists(Server.MapPath(imagePath)))
     {
         imagePath = $"../Images/{(string)Session["CurrentComic"]}/{(int)Session["pageNum"]}.jpg";
-            }
+    }
     }
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
             </li>
         </ul>
         <div id="comic">
-            <img id ="image"src=@imagePath title="Placeholder image from https://xkcd.com/2599/" />
+            <img id ="image"src=@imagePath title="Couldn't find any pages associated with this comic! Try adding some." />
             <script>
                 console.log(document.getElementById("image").src);
             </script>
