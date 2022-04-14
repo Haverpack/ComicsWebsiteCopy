@@ -64,6 +64,11 @@ namespace ComicsSite.Controllers
             return View();
         }
 
+        public ActionResult SetTags()
+        {
+            return View();
+        }
+
         //--------------------------------------------------------------------------
         public ActionResult FirstPage()
         {
