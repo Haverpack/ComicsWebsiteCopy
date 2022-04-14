@@ -50,6 +50,10 @@
                     {
                         <li id="logoutIndex">@Html.ActionLink("Logout", "htSOUT", "Home")</li>
                     }
+                    @if (Session["adminID"] != null)
+                    {
+                        <li id="reviewIndex">@Html.ActionLink("Review Reports", "Review", "Home")</li>
+                    }
                 </ul>
                 <ul class="nav pull-right">
                     <li>

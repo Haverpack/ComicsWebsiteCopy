@@ -1,0 +1,80 @@
+﻿/*
+    REF:
+    https://www.youtube.com/watch?v=fYq5PXgSsbE
+    https://www.youtube.com/watch?v=vQAvjof1oe4&t=589s
+
+*/
+
+.com_container {
+    display: flex;
+    /*This is what makes navbar centered.*/
+    flex-direction: column;
+    background-color:black;
+
+    min-width: 1250px;
+    min-height: 1250px;
+    flex: 1 0 auto;
+}
+
+.flexbox-item {
+    min-width: 1220px;
+    min-height: 1220px;
+    margin: 15px;
+    border: 3px solid #333;
+    background-color: #ffffff;
+}
+
+.flexbox-title {
+    display: flex;
+    flex: 1 1 100%;
+    align-items: center;
+    background-color:black;
+    justify-content: center;
+
+    max-height: 100px;
+}
+
+label {
+    flex-basis: 90px;
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+/*
+    TAKEN FROM: Main.css
+*/
+.f2col {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /*width: 50%;*/
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.f2col li {
+    text-align: center;
+    width: 29.5%;
+    height: auto;
+    display: inline-block;
+    border-radius: 10px;
+    border-style: groove;
+    border-color: black;
+    border-width: 2px;
+    margin: 15px;
+
+    background-color:honeydew;
+}
+
+.f2col li a {
+    display: block;
+    text-align: center;
+}
+
