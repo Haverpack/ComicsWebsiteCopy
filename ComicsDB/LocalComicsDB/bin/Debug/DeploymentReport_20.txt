@@ -1,0 +1,66 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Comment]
+       [dbo].[FComment]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       [dbo].[FK_FComment_Forum] (Foreign Key)
+       [dbo].[FK_FComment_User] (Foreign Key)
+       [dbo].[FK_Author_User] (Foreign Key)
+       [dbo].[FK_Catalog_Community] (Foreign Key)
+       [dbo].[FK_Catalog_User] (Foreign Key)
+       [dbo].[FK_Catalog_Tag_Catalog] (Foreign Key)
+       [dbo].[FK_Chapter_Comic] (Foreign Key)
+       [dbo].[FK_Collection_Of_Catalog] (Foreign Key)
+       [dbo].[FK_Collection_Of_Comic] (Foreign Key)
+       [dbo].[FK_Comic_Tag_Comic] (Foreign Key)
+       [dbo].[FK_Forum_Community] (Foreign Key)
+       [dbo].[FK_Member_Of_Community] (Foreign Key)
+       [dbo].[FK_Member_Of_User] (Foreign Key)
+       [dbo].[FK_Moderates_Community] (Foreign Key)
+       [dbo].[FK_Moderates_User] (Foreign Key)
+       [dbo].[FK_Report_User] (Foreign Key)
+       [dbo].[FK_Reviews_User] (Foreign Key)
+       [dbo].[FK_Subscribes_Comic] (Foreign Key)
+       [dbo].[FK_Subscribes_User] (Foreign Key)
+     Alter
+       [dbo].[Comic] (Table)
+     Table rebuild
+       [dbo].[Comment] (Table)
+       [dbo].[FComment] (Table)
+     Create
+       Default Constraint: unnamed constraint on [dbo].[Report] (Default Constraint)
+       [dbo].[FK_FComment_Forum] (Foreign Key)
+       [dbo].[FK_FComment_User] (Foreign Key)
+       [dbo].[FK_Author_User] (Foreign Key)
+       [dbo].[FK_Catalog_Community] (Foreign Key)
+       [dbo].[FK_Catalog_User] (Foreign Key)
+       [dbo].[FK_Catalog_Tag_Catalog] (Foreign Key)
+       [dbo].[FK_Chapter_Comic] (Foreign Key)
+       [dbo].[FK_Collection_Of_Catalog] (Foreign Key)
+       [dbo].[FK_Collection_Of_Comic] (Foreign Key)
+       [dbo].[FK_Comic_Tag_Comic] (Foreign Key)
+       [dbo].[FK_Forum_Community] (Foreign Key)
+       [dbo].[FK_Member_Of_Community] (Foreign Key)
+       [dbo].[FK_Member_Of_User] (Foreign Key)
+       [dbo].[FK_Moderates_Community] (Foreign Key)
+       [dbo].[FK_Moderates_User] (Foreign Key)
+       [dbo].[FK_Report_User] (Foreign Key)
+       [dbo].[FK_Reviews_User] (Foreign Key)
+       [dbo].[FK_Subscribes_Comic] (Foreign Key)
+       [dbo].[FK_Subscribes_User] (Foreign Key)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Comment_User] (Foreign Key)
+       [dbo].[FK_Comment_Chapter] (Foreign Key)
+     Create
+       [dbo].[FK_Comment_User] (Foreign Key)
+       [dbo].[FK_Comment_Chapter] (Foreign Key)

@@ -13,5 +13,6 @@ namespace ComicsAPI.Models
 
         public string author { get; set; }
 
+        public string banner { get; set; }
     }
 }

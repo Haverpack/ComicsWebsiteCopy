@@ -185,6 +185,45 @@ namespace ComicsAPI.Processors
             }
         }
 
+        public static bool UpdateBanner(Comic comic)
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+            using (var connection = new SqlConnection(connectionString))
+            {
+
+                var updateQuery = $"UPDATE [dbo].[Comic] SET comic.banner = '{comic.banner}' WHERE comic.title = {comic.title}";
+                connection.Open();
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.ExecuteNonQuery();
+                command.Dispose();
+                connection.Close();
+
+            }
+
+            return true;
+        }
+
+        public static List<Comic> getComicTitles()
+        {
+            var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";
+
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+
+                    string query = $"SELECT * \n" +
+                                    "FROM [dbo].[Comic] \n";
+                    List<Comic> result = connection.Query<Comic>(query).ToList();
+                    return (result);
+
+                }
+            } catch
+            {
+                return (null);
+            }
+        }
+
         public static bool RemoveChapter(Chapter chapter)
         {
             var connectionString = "Data Source=(localdb)\\ProjectsV13;Initial Catalog=ComicsDB;Integrated Security=True";

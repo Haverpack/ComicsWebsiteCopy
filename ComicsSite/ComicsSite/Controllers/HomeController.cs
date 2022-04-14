@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,6 +17,12 @@ namespace ComicsSite.Controllers
 {
     public class HomeController : Controller
     {
+        private string PEntry(string Response)
+        {
+            string[] parse = Response.Split(':');
+            return (parse[1].Trim('"'));
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -157,6 +164,65 @@ namespace ComicsSite.Controllers
             Session.Abandon();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult viewComics()
+        {
+            // REF:
+            // https://stackoverflow.com/questions/1259934/store-list-to-session#:~:text=Yes%2C%20you%20can%20store%20any,%22test%22%5D%3B%20%2F%2F%20list.
+            try
+            {
+                string url = "https://localhost:44366/comic/";
+                HttpWebRequest httpRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                httpRequest.Method = "GET";
+
+                HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+
+                if (httpResponse.StatusCode.ToString() == "OK")
+                {
+                    List<Comic> ComicsList = new List<Comic>();
+
+                    // REF:
+                    // https://stackoverflow.com/questions/3273205/read-text-from-response
+                    WebHeaderCollection header = httpResponse.Headers;
+                    var encoding = ASCIIEncoding.ASCII;
+
+                    using (var reader = new System.IO.StreamReader(httpResponse.GetResponseStream(), encoding))
+                    {
+                        string parsed = reader.ReadToEnd();
+                        System.Diagnostics.Debug.WriteLine("ResponseCT: " + parsed + "\n");
+
+                        // REF:
+                        // https://stackoverflow.com/questions/46467258/c-sharp-split-string-and-remove-empty-string
+                        // https://docs.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
+                        List<String> Comics = parsed.Split(new string[] { "{", "}", ",", "[", "]" },
+                            StringSplitOptions.RemoveEmptyEntries).ToList();
+                        for(int i = 0; i < Comics.Count; i+= 4)
+                        {
+                            //System.Diagnostics.Debug.WriteLine("Index: " + i + " | Contains: " + Comics[i] + "\n");
+                            Comic CC = new Comic();
+                            CC.title = PEntry(Comics[i]);
+                            CC.pages = PEntry(Comics[i + 1]);
+                            CC.author = PEntry(Comics[i + 2]);
+                            CC.banner = PEntry(Comics[i + 3]);
+                            ComicsList.Add(CC);
+                        }
+
+                        // Store all comics in Session.
+                        Session["allComics"] = ComicsList;
+
+                        for (int i = 0; i < ComicsList.Count; i++)
+                        {
+                            System.Diagnostics.Debug.WriteLine(ComicsList[i].banner + "\n");
+                        }
+                    }
+                }
+            }
+            catch (WebException ex) when ((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
+            {
+                // Empty, we just want to continue.
+            }
+            return (View("Main"));
         }
     }
 }
