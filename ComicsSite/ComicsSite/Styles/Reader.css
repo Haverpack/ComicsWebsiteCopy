@@ -84,3 +84,10 @@ img{
     width:auto;
     height:auto;
 }
+
+input
+{
+    margin-left: 50%;
+    margin-right: 50%;
+}
+

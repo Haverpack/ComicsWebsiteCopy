@@ -39,8 +39,11 @@ namespace ComicsSite.Controllers
 
         public ActionResult Reader()
         {
-            ViewBag.Message = "Your contact page.";
-
+            if(Session["CurrentComic"] == null || Session["pageNum"] == null)
+            {
+                Session["CurrentComic"] = "AdventureComic";
+                Session["pageNum"] = 1;
+            }
             return View();
         }
 
