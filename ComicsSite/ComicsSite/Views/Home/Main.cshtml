@@ -13,7 +13,14 @@
             {
                 <li>
                     <a href="https://localhost:44352/Home/Main">
-                        <img src="@Url.Content(CM.banner)" />
+                        @if (CM.banner == "" || CM.banner == null)
+                        {
+                            <img src="~/Images/nobanner.png" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Content(CM.banner)" />
+                        }
                     </a>
                     <a onclick="location.href='@Url.Action("SetCurrentComicFromMain", "Home")?title=@CM.title'">@CM.title</a>
                 </li>

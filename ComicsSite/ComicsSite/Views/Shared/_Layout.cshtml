@@ -49,6 +49,11 @@
                     {
                         <li id="logoutIndex">@Html.ActionLink("Logout", "htSOUT", "Home")</li>
                     }
+                    @if (Session["userID"] != null)
+                    {
+                        <li id="createIndex">@Html.ActionLink("Create Comic", "CreateComic", "Home")</li>
+                        <li id="mycreateIndex">@Html.ActionLink("My Comics", "UserComics", "Home")</li>
+                    }
                     @if (Session["adminID"] != null)
                     {
                         <li id="reviewIndex">@Html.ActionLink("Review Reports", "Review", "Home")</li>

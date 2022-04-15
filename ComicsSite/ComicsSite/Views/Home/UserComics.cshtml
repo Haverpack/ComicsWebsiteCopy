@@ -1,0 +1,42 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/Search.js"></script>
+    <link href="~/Styles/UserComics.css" rel="stylesheet" />
+    <title></title>
+</head>
+@*Need to check out how to use onstart in search.js to have the comics be clickable.*@
+<body>
+    <ul id="tags">
+        <li><label id=1><input type="checkbox" onclick="getClickedTag()">Fantasy</label></li>
+        <li><label id=2><input type="checkbox" onclick="getClickedTag()">Action</label></li>
+        <li><label id=3><input type="checkbox" onclick="getClickedTag()">Drama</label></li>
+        <li><label id=4><input type="checkbox" onclick="getClickedTag()">Thriller</label></li>
+        <li><label id=5><input type="checkbox" onclick="getClickedTag()">Super-hero</label></li>
+        <li><label id=6><input type="checkbox" onclick="getClickedTag()">Humor</label></li>
+        <li><label id=7><input type="checkbox" onclick="getClickedTag()">Non-fiction</label></li>
+        <li><label id=8><input type="checkbox" onclick="getClickedTag()">Slice-of-life</label></li>
+        <li><label id=9><input type="checkbox" onclick="getClickedTag()">Horror</label></li>
+        <li><label id=10><input type="checkbox" onclick="getClickedTag()">Romance</label></li>
+        <li><label id=11><input type="checkbox" onclick="getClickedTag()">Sports</label></li>
+        <li><label id=12><input type="checkbox" onclick="getClickedTag()">Mystery</label></li>
+        <li><label id=13><input type="checkbox" onclick="getClickedTag()">Lovecraftian</label></li>
+    </ul>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+    <ul id="myUL">
+        @using ComicsAPI.Models
+        @foreach (Comic CM in (List<Comic>)Session["allComics"])
+        {
+            if(CM.author == (string)Session["userID"]) 
+            {
+                <li><a href="#">@CM.title</a></li>
+            }
+        }
+    </ul>
+</body>
+</html>

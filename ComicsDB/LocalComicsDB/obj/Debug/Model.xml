@@ -876,7 +876,6 @@
 				</Entry>
 				<Entry>
 					<Element Type="SqlSimpleColumn" Name="[dbo].[Comic].[pages]">
-						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">

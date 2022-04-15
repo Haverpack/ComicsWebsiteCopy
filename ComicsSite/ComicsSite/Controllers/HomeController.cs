@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -71,6 +72,17 @@ namespace ComicsSite.Controllers
         {
             return View();
         }
+
+        public ActionResult CreateComic()
+        {
+            return View();
+        }
+
+        public ActionResult UserComics()
+        {
+            return View();
+        }
+
         //-----------------------------------------------
 
         public ActionResult FirstPage()
@@ -170,45 +182,6 @@ namespace ComicsSite.Controllers
         [HttpPost]
         public ActionResult htSIN(string userID, string password)
         {
-            /*
-             * REF:
-             * https://stackoverflow.com/questions/1330856/getting-http-status-code-number-200-301-404-etc-from-httpwebrequest-and-ht
-             * https://stackoverflow.com/questions/1705442/generate-http-post-request-from-controller
-             * https://stackoverflow.com/questions/1949610/how-can-i-catch-a-404
-             * https://www.youtube.com/watch?v=EyrKUSwi4uI
-             * 
-             * COOKIES (TO BE IMPLEMENTED):
-             * https://stackoverflow.com/questions/57982185/httpresponse-set-cookies
-             * 
-            
-            string url = "https://localhost:44366/user/{userID}/{password}";
-
-            //Data parameter Example
-            //string data = "name=" + value
-            string data = "userID=" + userID + "password=" + password;
-
-            HttpWebRequest httpRequest = (HttpWebRequest)HttpWebRequest.Create(url);
-            httpRequest.Method = "POST";
-            httpRequest.ContentType = "application/x-www-form-urlencoded";
-            httpRequest.ContentLength = data.Length;
-            httpRequest.AllowAutoRedirect = false;
-
-            var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
-            streamWriter.Write(data);
-            streamWriter.Close();
-
-            HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-            
-
-            if(httpResponse.StatusCode.ToString() == "OK")
-            {
-                return (Main());
-            } else
-            {
-                return (Signup());
-            }
-            */
-
             // GET REQUEST -- Above this is POST request (if we ever need it).
             try
             {
@@ -262,6 +235,74 @@ namespace ComicsSite.Controllers
                 return (View("Signup"));
             }
 
+        }
+
+        [HttpPost]
+        public ActionResult PostCM(string title, string author)
+        {
+            /*
+             * REF:
+             * https://www.tutorialsteacher.com/webapi/consume-web-api-post-method-in-aspnet-mvc
+             */
+
+            try
+            {
+                
+                string url = "https://localhost:44366/comic";
+                Comic CM = new Comic();
+                CM.title = title;
+                CM.author = author;
+                /*
+                //Data parameter Example
+                //string data = "name=" + value
+                var data = Encoding.ASCII.GetBytes(CM);
+
+                HttpWebRequest httpRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                httpRequest.Method = "POST";
+                httpRequest.ContentType = "raw";
+                httpRequest.ContentLength = data.Length;
+                httpRequest.AllowAutoRedirect = false;
+
+                var streamWriter = new StreamWriter(httpRequest.GetRequestStream());
+                streamWriter.Write(data);
+                streamWriter.Close();
+
+                HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+
+
+                if (httpResponse.StatusCode.ToString() == "OK")
+                {
+                    return (View("Main"));
+                }
+                else
+                {
+                    return (View("Signup"));
+                }
+                */
+
+                // Using code from Reference above, to POST.
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(url);
+
+                    //HTTP POST
+                    var postTask = client.PostAsJsonAsync<Comic>("comic", CM);
+                    postTask.Wait();
+
+                    var result = postTask.Result;
+                    if(result.IsSuccessStatusCode)
+                    {
+                        return (View("viewComics"));
+                    } else
+                    {
+                        return (View("Signup"));
+                    }
+                }
+            } catch (WebException ex) when((ex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
+            {
+                System.Diagnostics.Debug.WriteLine("FAILED");
+            }
+            return (View("Signup"));
         }
 
         public ActionResult htSOUT()
