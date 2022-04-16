@@ -102,7 +102,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"INSERT INTO [dbo].[Comic] VALUES ('{comic.title}','{comic.pages}','{comic.author}')";
+                    var query = $"INSERT INTO [dbo].[Comic] VALUES ('{comic.title}','{comic.pages}','{comic.author}', '{comic.banner}')";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);

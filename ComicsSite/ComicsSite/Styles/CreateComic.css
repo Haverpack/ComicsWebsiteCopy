@@ -1,0 +1,46 @@
+﻿/* REF: 
+    https://www.youtube.com/watch?v=Ba-Ly1EQg2A
+*/
+.signup_container {
+    display: flex;
+    justify-content: center;
+    /*height: 700px;*/
+    align-items: center;
+}
+
+.signupST {
+    background-color: beige;
+    padding: 15px;
+    width: 450px;
+}
+
+.flex-input {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    font-size: 16px
+}
+
+label {
+    flex-basis: 80px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+input[type="buttton"] {
+    width: 50%;
+    font-size: 20px;
+    padding: 5px;
+    border: none;
+    margin: 20px 0;
+}
+
+@media all and (max-width: 480px) {
+    .flex-input {
+        flex-direction: column;
+    }
+
+    label {
+        flex-basis: 0;
+    }
+}

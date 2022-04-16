@@ -144,6 +144,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Images\nobanner.png" />
     <Content Include="Images\Placeholder1.png" />
     <Content Include="Images\Placeholder2.png" />
     <Content Include="Images\PlaceHolder3.png" />
@@ -155,6 +156,7 @@
     <Content Include="Images\searchicon.png" />
     <Content Include="Images\spacecraft_debris_odds_ratio.png" />
     <Content Include="Images\spacecraft_debris_odds_ratio_2x.png" />
+    <Content Include="Scripts\Create.js" />
     <Content Include="Scripts\Search.js" />
     <Content Include="Styles\Review.css" />
     <Content Include="Styles\Main.css" />
@@ -176,8 +178,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Styles\UserComics.css" />
     <Content Include="Styles\Search.css" />
     <Content Include="Styles\Index.css" />
+    <Content Include="Styles\CreateComic.css" />
     <Content Include="Styles\Signup.css" />
     <Content Include="Styles\Community.css" />
     <Content Include="Web.config" />
@@ -199,6 +203,8 @@
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\Community.cshtml" />
     <Content Include="Views\Home\Review.cshtml" />
+    <Content Include="Views\Home\CreateComic.cshtml" />
+    <Content Include="Views\Home\UserComics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

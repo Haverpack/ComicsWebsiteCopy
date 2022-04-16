@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="~/Styles/CreateComic.css" rel="stylesheet" />
+    <script src="~/Scripts/Create.js"></script>
+</head>
+
+@*
+    Sign Up Page, consists of Username, Email, Password, which constitutes a User.
+    Database Call: REF: https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/sending-html-form-data-part-1
+    action="" call will be replaced in the future (if ever), to make a post call towards a proper address.
+    TODO:
+    -- Add some label that displays based on the bool call in our API, should it already exist.
+    -- Add some label or webpage that displays based on the bool call in our API, should it successfully be created
+    -- Notation: 'form' can't be nested inside of table. While it "works" in that it runs, this is bad practice. [RESOLVED]
+*@
+
+<body class="signup_container">
+    @using (Html.BeginForm("PostCM", "Home", FormMethod.Post))
+    {
+        <div class="signupST">
+            <h1>Create a Comic</h1>
+            <div class="flex-input">
+                <Label for=""> Title: </Label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="flex-input">
+                <Label for="">Author: </Label>
+                <input type="text" id="author" name="author" value="@Session["userID"].ToString()" readonly>
+            </div>
+            <div>
+                <input class="submit" type="submit" value="Create Comic!" />
+            </div>
+        </div>
+    }
+</body>
+
+</html>

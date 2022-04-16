@@ -79,9 +79,17 @@ namespace ComicsAPI.Controllers
 
         [HttpPost]
         [Route("comic")]
-        public bool AddComic(Comic comic)
+        public IHttpActionResult AddComic(Comic comic)
         {
-            return CatalogProcessor.AddComic(comic);
+            // Changed from returning bool.
+            if (CatalogProcessor.AddComic(comic))
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet]
