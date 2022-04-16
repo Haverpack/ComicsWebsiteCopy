@@ -256,11 +256,12 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<Comment>($"SELECT * FROM [dbo].[Comment] WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and writer = {comment.writer}").ToList()[0];
+                    return connection.Query<Comment>($"SELECT * FROM [dbo].[Comment] WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and writer = '{comment.writer}'").ToList()[0];
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
@@ -331,8 +332,9 @@ namespace ComicsAPI.Processors
                     return true;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }
