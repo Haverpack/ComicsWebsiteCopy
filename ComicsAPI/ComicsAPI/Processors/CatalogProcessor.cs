@@ -256,7 +256,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    return connection.Query<Comment>($"SELECT * FROM [dbo].[Comment] WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and comicTitle = '{comment.comicTitle}'").ToList()[0];
+                    return connection.Query<Comment>($"SELECT * FROM [dbo].[Comment] WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and writer = {comment.writer}").ToList()[0];
                 }
             }
             catch
@@ -272,7 +272,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"INSERT INTO [dbo].[Comment] (writer,chapterNum,body,comicTitle) VALUES ('{comment.writer}',{comment.chapterNum},'{comment.body}','{comment.comicTitle}')";
+                    var query = $"INSERT INTO [dbo].[Comment] (writer,chapterNum,body) VALUES ('{comment.writer}',{comment.chapterNum},'{comment.body}')";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -296,7 +296,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"DELETE FROM [dbo].[Comment] WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and comicTitle = '{comment.comicTitle}'";
+                    var query = $"DELETE FROM [dbo].[Comment] WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum}";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
@@ -320,7 +320,7 @@ namespace ComicsAPI.Processors
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    var query = $"UPDATE [dbo].[Comment] SET body = '{comment.body}' WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum} and comicTitle = '{comment.comicTitle}'";
+                    var query = $"UPDATE [dbo].[Comment] SET body = '{comment.body}' WHERE commentNum = {comment.commentNum} and chapterNum = {comment.chapterNum}";
 
                     connection.Open();
                     SqlCommand command = new SqlCommand(query, connection);
