@@ -292,7 +292,8 @@ namespace ComicsSite.Controllers
                     var result = postTask.Result;
                     if(result.IsSuccessStatusCode)
                     {
-                        return (View("viewComics"));
+                        SetCurrentComicFromMain(CM.title);
+                        return (View("Reader"));
                     } else
                     {
                         return (View("Signup"));

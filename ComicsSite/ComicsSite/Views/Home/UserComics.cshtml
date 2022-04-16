@@ -34,7 +34,7 @@
         {
             if(CM.author == (string)Session["userID"]) 
             {
-                <li><a href="#">@CM.title</a></li>
+                <li><a onclick="location.href='@Url.Action("SetCurrentComicFromMain", "Home")?title=@CM.title'">@CM.title</a></li>
             }
         }
     </ul>
